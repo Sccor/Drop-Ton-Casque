@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Drop Ton Casque</string>
-    <string name="welcome_msg">Bienvenue dans l\'application Drop Ton Casque</string>
-    <string name="commercant">commercant</string>
-    <string name="particulier">commercant</string>
+    <string name="welcome_msg">Drop Ton Casque</string>
+    <string name="com">commercant</string>
+    <string name="part">particulier</string>
     <string name="toggle_button">Placeholder toggle button</string>
     <string name="logo_description">Casque laché</string>
     <string name="menu">Menu</string>
