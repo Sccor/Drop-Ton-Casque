@@ -14,13 +14,13 @@ import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView log;
+    private Button log;
     private Button map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.log = (ImageView) findViewById(R.id.log);
+        this.log = (Button) findViewById(R.id.logBut);
         this.map = (Button) findViewById(R.id.map_button);
         log.setOnClickListener(new View.OnClickListener(){
             @SuppressLint("SetTextI18n")

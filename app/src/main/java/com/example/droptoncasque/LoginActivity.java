@@ -18,16 +18,17 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-        Switch switchBut= (Switch) findViewById(R.id.switch1);
-        switchBut.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        TextView textSwitch = (TextView) findViewById(R.id.textSwitch);
+        Switch switch1 = (Switch) findViewById(R.id.switch1);
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @SuppressLint("SetTextI18n")
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     System.out.println(isChecked);
-                    switchBut.setText("@string/part");
+                    textSwitch.setText("Particulier");
                 } else {
                     System.out.println(isChecked);
-                    switchBut.setText("@string/com");
+                    textSwitch.setText("Commerçant");
                 }
             }
         });

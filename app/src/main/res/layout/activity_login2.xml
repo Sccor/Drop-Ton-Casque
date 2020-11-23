@@ -57,15 +57,31 @@
 
     <Switch
         android:id="@+id/switch1"
-        android:layout_width="127dp"
-        android:layout_height="34dp"
-        android:text="@string/com"
+        android:layout_width="53dp"
+        android:layout_height="43dp"
+        android:checked="false"
+        android:textSize="20sp"
+        android:scaleX="1.7"
+        android:scaleY="1.7"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.695"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_menu"
-        app:layout_constraintVertical_bias="0.508"
-        android:checked="false"/>
+        app:layout_constraintVertical_bias="0.511" />
+
+    <TextView
+        android:id="@+id/textSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/com"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toStartOf="@+id/switch1"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_menu"
+        app:layout_constraintVertical_bias="0.484" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

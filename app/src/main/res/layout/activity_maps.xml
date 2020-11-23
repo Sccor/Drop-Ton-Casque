@@ -17,15 +17,20 @@
         tools:layout="@layout/activity_maps" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97">
 
         <Button
             android:id="@+id/map_button_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/red_bdx"
             android:text="@string/menu" />
     </LinearLayout>
 
