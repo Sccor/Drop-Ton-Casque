@@ -19,6 +19,72 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Button menu;
+
+    public class Pair<S, I>{
+        private S s;
+        private I i;
+
+        public Pair(S s, I i) {
+            this.s = s;
+            this.i = i;
+        }
+        public S getS() {return s;}
+        public void setS(S s) {this.s = s;}
+        public I getI() {return i;}
+        public void setI(I i) {this.i = i;}
+
+        @Override
+        public String toString() {
+            return "(" + s + ", " + i + ")";
+        }
+    }
+
+    public class commerce {
+        private String nom;
+        private String type;
+        private String adresse;
+        private Pair<Double,Double> coord;
+
+        public commerce(String nom, String type, String adresse, Pair<Double, Double> coord) {
+            this.nom = nom;
+            this.type = type;
+            this.adresse = adresse;
+            this.coord = coord;
+        }
+
+        public String getNom() {
+            return nom;
+        }
+
+        public void setNom(String nom) {
+            this.nom = nom;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getAdresse() {
+            return adresse;
+        }
+
+        public void setAdresse(String adresse) {
+            this.adresse = adresse;
+        }
+
+        public Pair<Double, Double> getCoord() {
+            return coord;
+        }
+
+        public void setCoord(Pair<Double, Double> coord) {
+            this.coord = coord;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,30 +98,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         menu.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(mainActivity);
                 finish();
             }
         });
 
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        commerce effrei = new commerce("efrei", "école d'ingénieur", "30- 32 Avenue de la République, 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
+        String enseigne = "école d'ingénieur";
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        LatLng efrei = new LatLng(48.788759834312756, 2.363766951205992);
-        mMap.addMarker(new MarkerOptions().position(efrei).title("Marker on Efrei Paris"));
+        LatLng efrei = new LatLng(effrei.coord.getS(), effrei.coord.getI());
+        mMap.addMarker(new MarkerOptions()
+                .position(efrei)
+                .snippet(effrei.adresse)
+                .title(effrei.nom));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(efrei));
         float zoomLevel = 16.0f;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(efrei, zoomLevel));
