@@ -37,7 +37,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 finish();
             }
         });
-
     }
 
     /**
@@ -51,13 +50,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        String enseigne = "école d'ingénieur";
         mMap = googleMap;
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         LatLng efrei = new LatLng(48.788759834312756, 2.363766951205992);
-        mMap.addMarker(new MarkerOptions().position(efrei).title("Marker in Efrei Paris"));
+        mMap.addMarker(new MarkerOptions()
+                .position(efrei)
+                .snippet(enseigne)
+                .title("Efrei Paris"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(efrei));
         float zoomLevel = 16.0f;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(efrei, zoomLevel));
