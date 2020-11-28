@@ -8,6 +8,6 @@
     <string name="logo_description">Casque laché</string>
     <string name="menu">Menu</string>
     <string name="title_activity_maps">Map</string>
-    <string name="login">Sign On</string>
+    <string name="login">Log in</string>
 
 </resources>

@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginActivity);
-                finish();
             }
         });
         map.setOnClickListener(new View.OnClickListener(){
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 Intent mapActivity = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(mapActivity);
-                finish();
             }
         });
     }
