@@ -9,5 +9,10 @@
     <string name="menu">Menu</string>
     <string name="title_activity_maps">Map</string>
     <string name="login">Sign On</string>
+    <string name="welCom">Bienvenue Commerçant !\nVous pouvez ajouter votre commerce:</string>
+    <string name="nameShop">Nom du commerce</string>
+    <string name="typeShop">Description commerce</string>
+    <string name="adressShop">Adresse du commerce</string>
+    <string name="addShop">Demmande d\'ajout</string>
 
 </resources>

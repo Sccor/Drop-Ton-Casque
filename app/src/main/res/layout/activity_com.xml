@@ -18,17 +18,67 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.045" />
 
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="234dp"
-        android:layout_height="40dp"
+        android:layout_width="245dp"
+        android:layout_height="57dp"
         android:gravity="center"
-        android:text="Bienvenue Commerçant !\nVous pouvez créer votre boutique"
+        android:text="@string/welCom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.158" />
+        app:layout_constraintVertical_bias="0.148" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="262dp"
+        android:layout_height="53dp"
+        android:hint="@string/nameShop"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.355" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="266dp"
+        android:layout_height="52dp"
+        android:hint="@string/typeShop"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:hint="@string/adressShop"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintVertical_bias="0.09" />
+
+    <Button
+        android:layout_width="149dp"
+        android:layout_height="64dp"
+        android:text="@string/addShop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintVertical_bias="0.27" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
