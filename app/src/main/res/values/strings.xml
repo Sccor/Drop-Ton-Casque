@@ -8,11 +8,8 @@
     <string name="logo_description">Casque laché</string>
     <string name="menu">Menu</string>
     <string name="title_activity_maps">Map</string>
-    <string name="login">Sign On</string>
-    <string name="welCom">Bienvenue Commerçant !\nVous pouvez ajouter votre commerce:</string>
-    <string name="nameShop">Nom du commerce</string>
-    <string name="typeShop">Description commerce</string>
-    <string name="adressShop">Adresse du commerce</string>
-    <string name="addShop">Demmande d\'ajout</string>
+    <string name="login">Log in</string>
+    <string name="mail">Email</string>
+    <string name="pw">Password</string>
 
 </resources>

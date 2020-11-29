@@ -3,6 +3,7 @@ package com.example.droptoncasque;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginActivity);
-                finish();
             }
         });
         map.setOnClickListener(new View.OnClickListener(){
@@ -36,18 +36,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 Intent mapActivity = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(mapActivity);
-                finish();
             }
         });
 
-        Button com = (Button) findViewById(R.id.button_com);
-        com.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent ComActivity = new Intent(getApplicationContext(), ComActivity.class);
-                startActivity(ComActivity);
-                finish();
-            }
-        });
     }
 }
