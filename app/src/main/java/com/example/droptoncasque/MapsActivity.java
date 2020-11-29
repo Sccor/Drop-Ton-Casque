@@ -106,21 +106,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        commerce effrei = new commerce("efrei", "école d'ingénieur", "30- 32 Avenue de la République, 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
-        String enseigne = "école d'ingénieur";
+        commerce efrei = new commerce("Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République, 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        LatLng efrei = new LatLng(effrei.coord.getS(), effrei.coord.getI());
+        LatLng posEfrei = new LatLng(efrei.coord.getS(), efrei.coord.getI());
         mMap.addMarker(new MarkerOptions()
-                .position(efrei)
-                .snippet(effrei.adresse)
-                .title(effrei.nom));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(efrei));
+                .position(posEfrei)
+                .snippet(efrei.adresse)
+                .title(efrei.nom));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(posEfrei));
         float zoomLevel = 16.0f;
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(efrei, zoomLevel));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posEfrei, zoomLevel));
 
     }
 }
