@@ -80,7 +80,9 @@ public class LoginActivity extends AppCompatActivity {
                     valid.show();
                     boolean check = (boolean) (switch1.isChecked());
                     if (check){
-                        System.out.println("To user page");
+                        Intent particulierActivity = new Intent(getApplicationContext(), ParticulierActivity.class);
+                        startActivity(particulierActivity);
+                        finish();
                     }else{
                         Intent comActivity = new Intent(getApplicationContext(), ComActivity.class);
                         startActivity(comActivity);
