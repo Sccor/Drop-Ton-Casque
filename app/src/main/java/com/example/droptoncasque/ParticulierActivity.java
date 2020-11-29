@@ -13,6 +13,7 @@ public class ParticulierActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getTheme().applyStyle(R.style.OverlayThemeLime, true);
         setContentView(R.layout.activity_particulier);
         this.map = (Button) findViewById(R.id.map_button);
 

@@ -13,7 +13,7 @@ public class ComActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getTheme().applyStyle(R.style.OverlayThemeLime, true);
+
         setContentView(R.layout.activity_com);
 
         Button menu = (Button) findViewById(R.id.button_menu);
