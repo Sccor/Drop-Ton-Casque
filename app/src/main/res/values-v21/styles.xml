@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+    <style name="OverlayThemeLime" parent="Theme.DropTonCasque">
+        <item name="colorPrimary">@color/md_lime_500</item>
+        <item name="colorPrimaryDark">@color/md_lime_700</item>
+        <item name="colorAccent">@color/md_amber_A400</item>
+        <item name="android:statusBarColor" >@color/md_lime_500</item>
+    </style>
+
+    <style name="OverlayThemeMain" parent="Theme.DropTonCasque">
+        <item name="colorPrimary">@color/red_bdx</item>
+        <item name="colorPrimaryVariant">@color/red_bdx</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+</resources>

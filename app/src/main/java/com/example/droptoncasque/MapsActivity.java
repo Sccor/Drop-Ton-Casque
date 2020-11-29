@@ -98,8 +98,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         menu.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(mainActivity);
                 finish();
             }
         });
