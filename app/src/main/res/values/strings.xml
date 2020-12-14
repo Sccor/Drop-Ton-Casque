@@ -16,4 +16,12 @@
     <string name="typeShop">Description commerce</string>
     <string name="adressShop">Adresse de votre commerce</string>
     <string name="addShop">Demmande d\'ajout</string>
+    <string name="popTitle">This is a popup window.</string>
+    <string name="type">Type</string>
+    <string name="content">Content</string>
+    <string name="email">Email</string>
+    <string name="tel">Telephone</string>
+    <string name="url">Lien du site</string>
+
+
 </resources>

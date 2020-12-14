@@ -65,8 +65,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         private Pair<Double,Double> coord;
         private String contact_email;
         private String contact_telephone;
+        private String url;
 
-        public Commerce(Integer id, String nom, String type, String adresse, Pair<Double, Double> coord, String contact_email, String contact_telephone) {
+        public Commerce(Integer id, String nom, String type, String adresse, Pair<Double, Double> coord, String contact_email, String contact_telephone, String url) {
             this.id = id;
             this.nom = nom;
             this.type = type;
@@ -74,6 +75,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             this.coord = coord;
             this.contact_email= contact_email;
             this.contact_telephone = contact_telephone;
+            this.url = url;
 
         }
 
@@ -133,6 +135,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             this.contact_telephone = contact_telephone;
         }
 
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
         @Override
         public String toString() {
             return "Commerce{" +
@@ -150,7 +160,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         commerces = new ArrayList<Commerce>();
-        Commerce efrei = new Commerce(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000");
+        Commerce efrei = new Commerce(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/");
         commerces.add(efrei);
         System.out.println(efrei);
         super.onCreate(savedInstanceState);
@@ -168,7 +178,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 finish();
             }
         });
-
     }
 
     @Override
@@ -201,7 +210,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-//        System.out.println(commerces.size());
+        System.out.println(marker);
 //        Commerce efrei = null;
 //        int index = 0;
 //        for (int i = 0; i < commerces.size(); i++){
@@ -210,32 +219,51 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                efrei  = commerces.get(index);
 //            }
 //        }
-        Commerce efrei = new Commerce(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000");
+        System.out.println(marker);
+        System.out.println("Heyy");
+        Commerce efrei = new Commerce(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/");
         Toast.makeText(this, "Info window clicked",
                 Toast.LENGTH_SHORT).show();
 
-            LayoutInflater inflater = (LayoutInflater)
-                    getSystemService(LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
         View popupView = inflater.inflate(R.layout.popup_window, null);
 //            TextView comTitle = (TextView) findViewById(R.id.com_title);
 //            System.out.println(efrei);
 //            comTitle.setText("Efrei PARIS");
             // create the popup window
-            int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-            int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-            boolean focusable = true; // lets taps outside the popup also dismiss it
-            final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-            popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                TextView title = (TextView) findViewById(R.id.com_title);
+//                title.setText(efrei.getNom());
+//                TextView type = (TextView) findViewById(R.id.com_type);
+//                type.setText(efrei.getNom());
+//                TextView content = (TextView) findViewById(R.id.com_content);
+//                content.setText(efrei.getNom());
+//                TextView email = (TextView) findViewById(R.id.com_email);
+//                email.setText(efrei.getContact_email());
+//                TextView tel = (TextView) findViewById(R.id.com_telephone);
+//                tel.setText(efrei.getContact_telephone());
+//                TextView url = (TextView) findViewById(R.id.com_url);
+//                url.setText(efrei.getNom());
+//            }
+//        });
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
 
 
-            popupView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    popupWindow.dismiss();
-                    return true;
-                }
-            });
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
         }
 }
