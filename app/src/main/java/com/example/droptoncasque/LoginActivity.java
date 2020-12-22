@@ -21,15 +21,25 @@ import android.view.View;
 import android.widget.Toast;
 import android.view.Window;
 import android.widget.ToggleButton;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 
 
 
 public class LoginActivity extends AppCompatActivity {
+    TextView textSwitch;
+    Switch switch1;
+    EditText mailInput;
+    EditText pwInput;
+    Button log;
+    Button menu;
+    Window window;
 
-
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        SQLiteDatabase db = null;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
         TextView textSwitch = (TextView) findViewById(R.id.textSwitch);
@@ -39,15 +49,21 @@ public class LoginActivity extends AppCompatActivity {
         Button log = (Button) findViewById(R.id.button);
         Button menu = (Button) findViewById(R.id.button_menu);
         Window window = getWindow();
-
+//        try{
+//            db=openOrCreateDatabase("StudentDB", SQLiteDatabase.CREATE_IF_NECESSARY, null);
+//        }catch(SQLException e) {
+//        }
+//            db = db.openDatabase("usersDB", null, SQLiteDatabase.CREATE_IF_NECESSARY);
+//        Cursor c=db.rawQuery("SELECT * FROM users", null);
+//        System.out.println(c);
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @SuppressLint("SetTextI18n")
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     System.out.println(isChecked);
                     textSwitch.setText("Particulier");
-                    log.setBackgroundColor(Color.parseColor("#C8BC1C"));
-                    menu.setBackgroundColor(Color.parseColor("#C8BC1C"));
+                    log.setBackgroundColor(Color.parseColor("#FF9A00"));
+                    menu.setBackgroundColor(Color.parseColor("#FF9A00"));
                     log.setTextColor(Color.parseColor("#000000"));
                     menu.setTextColor(Color.parseColor("#000000"));
                 } else {

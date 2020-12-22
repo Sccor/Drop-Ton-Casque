@@ -17,12 +17,14 @@ public class MainActivity extends AppCompatActivity {
 
     private Button log;
     private Button map;
+    private Button inscri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.log = (Button) findViewById(R.id.logBut);
         this.map = (Button) findViewById(R.id.map_button);
+        this.inscri = (Button) findViewById(R.id.inscriBut);
         log.setOnClickListener(new View.OnClickListener(){
             @SuppressLint("SetTextI18n")
             @Override
@@ -36,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 Intent mapActivity = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(mapActivity);
+            }
+        });
+        inscri.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent inscriptionActivity = new Intent(getApplicationContext(), InscriptionActivity.class);
+                startActivity(inscriptionActivity);
             }
         });
 

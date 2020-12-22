@@ -36,7 +36,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Button menu;
-    private ArrayList<Commerce> commerces;
+    private ArrayList<CommerceModel> commerces;
 
     public class Pair<S, I>{
         private S s;
@@ -57,111 +57,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    public class Commerce {
-        private Integer id;
-        private String nom;
-        private String type;
-        private String adresse;
-        private Pair<Double,Double> coord;
-        private String contact_email;
-        private String contact_telephone;
-        private String url;
-
-        public Commerce(Integer id, String nom, String type, String adresse, Pair<Double, Double> coord, String contact_email, String contact_telephone, String url) {
-            this.id = id;
-            this.nom = nom;
-            this.type = type;
-            this.adresse = adresse;
-            this.coord = coord;
-            this.contact_email= contact_email;
-            this.contact_telephone = contact_telephone;
-            this.url = url;
-
-        }
-
-        public String getNom() {
-            return nom;
-        }
-
-        public void setNom(String nom) {
-            this.nom = nom;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public String getAdresse() {
-            return adresse;
-        }
-
-        public void setAdresse(String adresse) {
-            this.adresse = adresse;
-        }
-
-        public Pair<Double, Double> getCoord() {
-            return coord;
-        }
-
-        public void setCoord(Pair<Double, Double> coord) {
-            this.coord = coord;
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getContact_email() {
-            return contact_email;
-        }
-
-        public void setContact_email(String contact_email) {
-            this.contact_email = contact_email;
-        }
-
-        public String getContact_telephone() {
-            return contact_telephone;
-        }
-
-        public void setContact_telephone(String contact_telephone) {
-            this.contact_telephone = contact_telephone;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        @Override
-        public String toString() {
-            return "Commerce{" +
-                    "id=" + id +
-                    ", nom='" + nom + '\'' +
-                    ", type='" + type + '\'' +
-                    ", adresse='" + adresse + '\'' +
-                    ", coord=" + coord +
-                    ", contact_email='" + contact_email + '\'' +
-                    ", contact_telephone='" + contact_telephone + '\'' +
-                    '}';
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        commerces = new ArrayList<Commerce>();
-        Commerce efrei = new Commerce(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/");
-        commerces.add(efrei);
+        CommerceModel efrei = new CommerceModel(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/");
         System.out.println(efrei);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
@@ -178,29 +77,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 finish();
             }
         });
+
+
+
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Commerce efrei = null;
+        CommerceModel efrei = null;
         int index = 0;
-        for (int i = 0; i < commerces.size(); i++){
-            if(commerces.get(i).getId() == 1){
-                index = i;
-                efrei  = commerces.get(index);
-            }
-        }
 
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        LatLng posEfrei = new LatLng(efrei.coord.getS(), efrei.coord.getI());
+        LatLng posEfrei = new LatLng(efrei.getCoord().getS(), efrei.getCoord().getI());
         mMap.addMarker(new MarkerOptions()
                 .position(posEfrei)
-                .snippet(efrei.adresse + "\n Cliquez pour plus d'informations")
-                .title(efrei.nom));
+                .snippet(efrei.getAdresse() + "\n Cliquez pour plus d'informations")
+                .title(efrei.getNom()));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(posEfrei));
         float zoomLevel = 16.0f;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posEfrei, zoomLevel));
@@ -211,17 +107,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onInfoWindowClick(Marker marker) {
         System.out.println(marker);
-//        Commerce efrei = null;
-//        int index = 0;
-//        for (int i = 0; i < commerces.size(); i++){
-//            if(commerces.get(i).getId() == 1){
-//                index = i;
-//                efrei  = commerces.get(index);
-//            }
-//        }
+
         System.out.println(marker);
         System.out.println("Heyy");
-        Commerce efrei = new Commerce(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/");
+        CommerceModel efrei = new CommerceModel(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/");
         Toast.makeText(this, "Info window clicked",
                 Toast.LENGTH_SHORT).show();
 

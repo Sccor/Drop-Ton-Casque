@@ -8,7 +8,7 @@
     <string name="logo_description">Casque laché</string>
     <string name="menu">Menu</string>
     <string name="title_activity_maps">Map</string>
-    <string name="login">Log in</string>
+    <string name="login">S\'identifier</string>
     <string name="mail">Email</string>
     <string name="pw">Mot de passe</string>
     <string name="welCom">Bienvenue Commercant !\n Vous pouvez rajouter votre commerce.</string>
@@ -22,6 +22,11 @@
     <string name="email">Email</string>
     <string name="tel">Telephone</string>
     <string name="url">Lien du site</string>
+    <string name="inscription">S\'inscrire</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prenom</string>
+    <string name="confirm_pw">Confirmez le mot de passe</string>
+
 
 
 </resources>
