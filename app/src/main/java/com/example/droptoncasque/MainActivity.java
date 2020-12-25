@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         map.setOnClickListener(new View.OnClickListener(){
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view){
                 Intent mapActivity = new Intent(getApplicationContext(), MapsActivity.class);
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         inscri.setOnClickListener(new View.OnClickListener(){
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view){
                 Intent inscriptionActivity = new Intent(getApplicationContext(), InscriptionActivity.class);

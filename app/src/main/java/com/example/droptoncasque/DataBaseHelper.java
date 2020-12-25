@@ -1,5 +1,6 @@
 package com.example.droptoncasque;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -31,4 +32,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    public boolean addOne(UserModel newUser, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_USER_NOM, newUser.getNom());
+        cv.put(COLUMN_USER_PRENOM, newUser.getPrenom());
+        cv.put(COLUMN_USER_EMAIL, newUser.getEmail());
+        cv.put(COLUMN_USER_FONCTION, newUser.getFonction());
+        cv.put(COLUMN_USER_PASSWORD, password);
+
+        long insert = db.insert(USERS_TABLE, null, cv);
+        if(insert == -1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 }

@@ -86,7 +86,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         CommerceModel efrei = null;
         int index = 0;
-
+        efrei = new CommerceModel(-1, "Efrei PARIS", "Ecole d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992), "admissions@efrei.fr", "+33 188 289 000", "https://www.efrei.fr/");
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(true);
