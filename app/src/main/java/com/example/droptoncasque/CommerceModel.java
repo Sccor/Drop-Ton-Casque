@@ -88,7 +88,7 @@ public class CommerceModel {
 
     @Override
     public String toString() {
-        return "Commerce{" +
+        return "CommerceModel{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", type='" + type + '\'' +
@@ -96,6 +96,7 @@ public class CommerceModel {
                 ", coord=" + coord +
                 ", contact_email='" + contact_email + '\'' +
                 ", contact_telephone='" + contact_telephone + '\'' +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

@@ -1,5 +1,7 @@
 package com.example.droptoncasque;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,20 +11,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class InscriptionActivity extends AppCompatActivity {
 
-    private Button btnInsc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_inscription);
         super.onCreate(savedInstanceState);
-        this.btnInsc = (Button) findViewById(R.id.buttonInscrip);
-
+        Button btnInsc = (Button) findViewById(R.id.btnInscri);
+        Button menu = (Button) findViewById(R.id.button_menu);
         btnInsc.setOnClickListener(new View.OnClickListener(){
+            @SuppressLint("ShowToast")
             @Override
-            public void onClick(View w){
-                UserModel newUser = null;
+            public void onClick(View view){
+                UserModel newUser;
                 try {
+                    Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(loginActivity);
                     newUser = new UserModel();
                     Toast.makeText(InscriptionActivity.this, "Created", Toast.LENGTH_SHORT);
                 } catch (Exception e) {
+                    Intent mapActivity = new Intent(getApplicationContext(), MapsActivity.class);
+                    startActivity(mapActivity);
                     Toast.makeText(InscriptionActivity.this, "Error in creation", Toast.LENGTH_SHORT);
                     newUser = new UserModel(-1, "error", "e", "error", false);
                 }
@@ -32,6 +39,13 @@ public class InscriptionActivity extends AppCompatActivity {
                 Toast.makeText(InscriptionActivity.this, "Success = " + success, Toast.LENGTH_SHORT);
             }
         });
+        menu.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                finish();
+            }
+        });
+
     }
 
 }

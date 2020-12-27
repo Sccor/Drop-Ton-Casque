@@ -29,6 +29,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     TextView textSwitch;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch switch1;
     EditText mailInput;
     EditText pwInput;
@@ -42,13 +43,14 @@ public class LoginActivity extends AppCompatActivity {
         SQLiteDatabase db = null;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-        TextView textSwitch = (TextView) findViewById(R.id.textSwitch);
-        Switch switch1 = (Switch) findViewById(R.id.switch1);
-        EditText mailInput = (EditText) findViewById(R.id.editTextTextEmailAddress);
-        EditText pwInput = (EditText) findViewById(R.id.editTextTextPassword);
-        Button log = (Button) findViewById(R.id.button);
-        Button menu = (Button) findViewById(R.id.button_menu);
-        Window window = getWindow();
+        this.textSwitch = (TextView) findViewById(R.id.textSwitch);
+        this.switch1 = (Switch) findViewById(R.id.switch1);
+        this.mailInput = (EditText) findViewById(R.id.editTextTextEmailAddress);
+        this.pwInput = (EditText) findViewById(R.id.editTextTextPassword);
+        this.log = (Button) findViewById(R.id.button);
+        this.menu = (Button) findViewById(R.id.button_menu);
+        this.window = getWindow();
+
 //        try{
 //            db=openOrCreateDatabase("StudentDB", SQLiteDatabase.CREATE_IF_NECESSARY, null);
 //        }catch(SQLException e) {
@@ -56,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 //            db = db.openDatabase("usersDB", null, SQLiteDatabase.CREATE_IF_NECESSARY);
 //        Cursor c=db.rawQuery("SELECT * FROM users", null);
 //        System.out.println(c);
+
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @SuppressLint("SetTextI18n")
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

@@ -1,18 +1,22 @@
 package com.example.droptoncasque;
 
+import java.util.List;
+
 public class UserModel {
     private int id;
     private String nom;
     private String prenom;
     private String email;
     private Boolean fonction;
+    private List<CommerceModel> favoris;
 
-    public UserModel(int id, String nom, String prenom, String email, Boolean fonction) {
+    public UserModel(int id, String nom, String prenom, String email, Boolean fonction, List<CommerceModel> favs) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.fonction = fonction;
+        this.favoris = favs;
     }
 
     public UserModel() {
@@ -21,6 +25,7 @@ public class UserModel {
         this.prenom = null;
         this.email = null;
         this.fonction = null;
+        this.favoris = null;
     }
 
     public int getId() {
@@ -63,6 +68,14 @@ public class UserModel {
         this.fonction = fonction;
     }
 
+    public List<CommerceModel> getFavoris() {
+        return favoris;
+    }
+
+    public void setFavoris(List<CommerceModel> favoris) {
+        this.favoris = favoris;
+    }
+
     @Override
     public String toString() {
         return "UserModel{" +
@@ -70,7 +83,8 @@ public class UserModel {
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", email='" + email + '\'' +
-                ", fonction='" + fonction + '\'' +
+                ", fonction=" + fonction +
+                ", favoris=" + favoris +
                 '}';
     }
 }
