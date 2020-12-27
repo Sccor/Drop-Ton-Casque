@@ -15,7 +15,7 @@
     <string name="nameShop">Nom du commerce</string>
     <string name="typeShop">Description commerce</string>
     <string name="adressShop">Adresse de votre commerce</string>
-    <string name="addShop">Demmande d\'ajout</string>
+    <string name="addShop">Demande d\'ajout</string>
     <string name="popTitle">This is a popup window.</string>
     <string name="type">Type</string>
     <string name="content">Content</string>
@@ -26,7 +26,7 @@
     <string name="nom">Nom</string>
     <string name="prenom">Prenom</string>
     <string name="confirm_pw">Confirmez le mot de passe</string>
-
+    <string name="je_suis">Je suis</string>
 
 
 </resources>

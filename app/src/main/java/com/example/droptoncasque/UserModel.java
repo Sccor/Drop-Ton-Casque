@@ -1,15 +1,13 @@
 package com.example.droptoncasque;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 
 public class UserModel {
     private int id;
     private String nom;
     private String prenom;
     private String email;
-    private Boolean fonction;
+    private Boolean fonction; //true == particulier, false == commerçant
     private ArrayList<Integer> favoris;
 
     public UserModel(int id, String nom, String prenom, String email, Boolean fonction, ArrayList<Integer> favs) {
