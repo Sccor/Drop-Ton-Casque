@@ -1,6 +1,8 @@
 package com.example.droptoncasque;
 
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 
 public class UserModel {
     private int id;
@@ -8,9 +10,9 @@ public class UserModel {
     private String prenom;
     private String email;
     private Boolean fonction;
-    private List<CommerceModel> favoris;
+    private ArrayList<Integer> favoris;
 
-    public UserModel(int id, String nom, String prenom, String email, Boolean fonction, List<CommerceModel> favs) {
+    public UserModel(int id, String nom, String prenom, String email, Boolean fonction, ArrayList<Integer> favs) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -68,11 +70,11 @@ public class UserModel {
         this.fonction = fonction;
     }
 
-    public List<CommerceModel> getFavoris() {
+    public ArrayList<Integer> getFavoris() {
         return favoris;
     }
 
-    public void setFavoris(List<CommerceModel> favoris) {
+    public void setFavoris(ArrayList<Integer> favoris) {
         this.favoris = favoris;
     }
 

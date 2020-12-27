@@ -23,15 +23,11 @@ public class InscriptionActivity extends AppCompatActivity {
             public void onClick(View view){
                 UserModel newUser;
                 try {
-                    Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(loginActivity);
                     newUser = new UserModel();
                     Toast.makeText(InscriptionActivity.this, "Created", Toast.LENGTH_SHORT);
                 } catch (Exception e) {
-                    Intent mapActivity = new Intent(getApplicationContext(), MapsActivity.class);
-                    startActivity(mapActivity);
                     Toast.makeText(InscriptionActivity.this, "Error in creation", Toast.LENGTH_SHORT);
-                    newUser = new UserModel(-1, "error", "e", "error", false);
+                    newUser = new UserModel(-1, "error", "e", "error", false, null);
                 }
                 String pass = "Default";
                 DataBaseHelper dbHelper = new DataBaseHelper(InscriptionActivity.this);
