@@ -64,7 +64,7 @@ public class InscriptionActivity extends AppCompatActivity {
                 UserModel newUser;
                 try {
                     if(Mdp.getText().toString().equals(Cmdp.getText().toString())){
-                        newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), textSwitch.getText().toString().equals("Particulier"), new ArrayList<Integer>());
+                        newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), textSwitch.getText().toString().equals("Particulier"), null);
                         DataBaseHelper dbHelper = new DataBaseHelper(InscriptionActivity.this);
                         dbHelper.addOne(newUser, Mdp.getText().toString());
                         Toast valid = Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT);

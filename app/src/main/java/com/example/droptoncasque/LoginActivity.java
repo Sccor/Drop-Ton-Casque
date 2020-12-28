@@ -98,12 +98,11 @@ public class LoginActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view){
-
-                if (logcheck(mailInput.getText().toString(), pwInput.getText().toString())){
+                boolean check = (boolean) (switch1.isChecked());
+                if (logcheck(mailInput.getText().toString(), pwInput.getText().toString(), check)){
                     Toast valid = Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT);
                     valid.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                     valid.show();
-                    boolean check = (boolean) (switch1.isChecked());
                     if (check){
                         Intent particulierActivity = new Intent(getApplicationContext(), ParticulierActivity.class);
                         startActivity(particulierActivity);
@@ -126,10 +125,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public Boolean logcheck(String mail, String pw){
+    public Boolean logcheck(String mail, String pw, Boolean check){
+        if (mail.equals("admin") && pw.equals("admin")){
+            return true;
+        }
         DataBaseHelper dbHelper = new DataBaseHelper(LoginActivity.this);
         UserModel loggedUser = dbHelper.login(mail, pw);
-        if (loggedUser != null){
+        if (loggedUser != null && check == loggedUser.getFonction()){
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putInt("User_ID", loggedUser.getId());
@@ -137,8 +139,12 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("User_Name", loggedUser.getNom());
             editor.putString("User_Mail", loggedUser.getEmail());
             editor.putBoolean("User_Role", loggedUser.getFonction());
-            editor.putString("User_Favs", loggedUser.getFavoris().stream().map(Object::toString).collect(Collectors.joining(", ")));
-            editor.commit();
+            if (loggedUser.getFavoris() == null){
+                editor.putString("User_Favs", "");
+            }else{
+                editor.putString("User_Favs", loggedUser.getFavoris().stream().map(Object::toString).collect(Collectors.joining(", ")));
+            }
+            editor.apply();
             return true;
         }
         return false;

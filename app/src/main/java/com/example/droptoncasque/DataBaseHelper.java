@@ -69,15 +69,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(queryString, new String[] {mail});
         UserModel loggedUser = null;
         if(cursor.moveToFirst() && BCrypt.checkpw(pw, cursor.getString(4))){
-            ArrayList<String> arr = new ArrayList<String>(Arrays.asList(cursor.getString(6).split(", ")));
             ArrayList<Integer> favs = new ArrayList<>();
-            for (Object str : arr){
-                favs.add(Integer.parseInt((String) str));
+            if (cursor.getString(6).equals("")){
+                favs = null;
+            }else{
+                ArrayList<String> arr = new ArrayList<String>(Arrays.asList(cursor.getString(6).split(", ")));
+                for (Object str : arr){
+                    favs.add(Integer.parseInt((String) str));
+                }
             }
              loggedUser = new UserModel(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), (cursor.getInt(5) == 1), favs);
 
         }
-        System.out.println(loggedUser);
+        System.out.println("\n\n\n user found : " + loggedUser + "\n\n\n");
         cursor.close();
         db.close();
         return loggedUser;
