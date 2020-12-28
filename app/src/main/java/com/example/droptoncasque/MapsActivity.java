@@ -55,7 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         @Override
         public String toString() {
-            return s + "; " + i;
+            return s + "," + i;
         }
     }
 

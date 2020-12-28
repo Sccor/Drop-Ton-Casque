@@ -18,13 +18,12 @@ import java.util.List;
 
 
 public class ComActivity extends AppCompatActivity {
-
+    DataBaseCommerces dbHelper = new DataBaseCommerces(ComActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_com);
-
         Button menu = (Button) findViewById(R.id.button_menu);
         Button add = (Button) findViewById(R.id.btnAjout);
         Button testQuery = (Button) findViewById(R.id.testQuery);
@@ -62,7 +61,6 @@ public class ComActivity extends AppCompatActivity {
                 CommerceModel newCommerce;
                 try {
                     newCommerce = new CommerceModel(-1, Nom.getText().toString(), Type.getText().toString(), Adresse.getText().toString(), Email.getText().toString(), Tel.getText().toString(), Url.getText().toString(), new MapsActivity.Pair<Double, Double>(48.79, (Double)(Math.random() * ((2.40 - 2.35)+1))+2.35));
-                    DataBaseCommerces dbHelper = new DataBaseCommerces(ComActivity.this);
                     final boolean success = dbHelper.addOne(newCommerce);
                     Toast valid = Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_SHORT);
                     valid.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
