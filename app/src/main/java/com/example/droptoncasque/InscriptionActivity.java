@@ -3,7 +3,9 @@ package com.example.droptoncasque;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -12,6 +14,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -54,6 +57,7 @@ public class InscriptionActivity extends AppCompatActivity {
         });
 
         btnInsc.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view){
                 UserModel newUser;
@@ -61,12 +65,16 @@ public class InscriptionActivity extends AppCompatActivity {
                     if(Mdp.getText().toString().equals(Cmdp.getText().toString())){
                         newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), textSwitch.getText().toString().equals("Particulier"), new ArrayList<Integer>());
                         DataBaseHelper dbHelper = new DataBaseHelper(InscriptionActivity.this);
-                        final boolean success = dbHelper.addOne(newUser, Mdp.getText().toString());
-                        Toast valid = Toast.makeText(getApplicationContext(),"Done !",Toast.LENGTH_SHORT);
+                        dbHelper.addOne(newUser, Mdp.getText().toString());
+                        Toast valid = Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT);
+                        valid.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
+                        valid.show();
                     }
                 } catch (Exception e) {
                     newUser = new UserModel(-1, "error", "e", "error", true, null);
-                    Toast wrong = Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT);
+                    Toast wrong = Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT);
+                    wrong.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
+                    wrong.show();
                 }
             }
         });

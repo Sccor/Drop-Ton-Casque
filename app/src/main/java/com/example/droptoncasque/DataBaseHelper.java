@@ -2,6 +2,7 @@ package com.example.droptoncasque;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
@@ -9,6 +10,9 @@ import android.os.Build;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -48,7 +52,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_EMAIL, newUser.getEmail());
         cv.put(COLUMN_USER_FONCTION, newUser.getFonction());
         cv.put(COLUMN_USER_FAVORIS, newUser.getFavoris().stream().map(Object::toString).collect(Collectors.joining(", ")));
-        cv.put(COLUMN_USER_PASSWORD, password);
+        cv.put(COLUMN_USER_PASSWORD, BCrypt.hashpw(password, BCrypt.gensalt()));
 
         long insert = db.insert(USERS_TABLE, null, cv);
         if(insert == -1){
@@ -57,5 +61,27 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    public UserModel login(String mail, String pw){
+
+        String queryString = "SELECT * FROM " + USERS_TABLE + " WHERE USER_EMAIL=?";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, new String[] {mail});
+        UserModel loggedUser = null;
+        if(cursor.moveToFirst() && BCrypt.checkpw(pw, cursor.getString(4))){
+            ArrayList<String> arr = new ArrayList<String>(Arrays.asList(cursor.getString(6).split(", ")));
+            ArrayList<Integer> favs = new ArrayList<>();
+            for (Object str : arr){
+                favs.add(Integer.parseInt((String) str));
+            }
+             loggedUser = new UserModel(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), (cursor.getInt(5) == 1), favs);
+
+        }
+        System.out.println(loggedUser);
+        cursor.close();
+        db.close();
+        return loggedUser;
+    }
+
 
 }

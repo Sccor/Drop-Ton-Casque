@@ -1,14 +1,18 @@
 package com.example.droptoncasque;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -25,6 +29,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.stream.Collectors;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -90,10 +95,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         log.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view){
 
-                if (mailInput.getText().toString().equals("admin") && pwInput.getText().toString().equals("admin")){
+                if (logcheck(mailInput.getText().toString(), pwInput.getText().toString())){
                     Toast valid = Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT);
                     valid.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                     valid.show();
@@ -115,6 +121,26 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Boolean logcheck(String mail, String pw){
+        DataBaseHelper dbHelper = new DataBaseHelper(LoginActivity.this);
+        UserModel loggedUser = dbHelper.login(mail, pw);
+        if (loggedUser != null){
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("User_ID", loggedUser.getId());
+            editor.putString("User_Surname", loggedUser.getPrenom());
+            editor.putString("User_Name", loggedUser.getNom());
+            editor.putString("User_Mail", loggedUser.getEmail());
+            editor.putBoolean("User_Role", loggedUser.getFonction());
+            editor.putString("User_Favs", loggedUser.getFavoris().stream().map(Object::toString).collect(Collectors.joining(", ")));
+            editor.commit();
+            return true;
+        }
+        return false;
+    }
 }
