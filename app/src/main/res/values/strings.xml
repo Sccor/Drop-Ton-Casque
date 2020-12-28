@@ -13,7 +13,7 @@
     <string name="pw">Mot de passe</string>
     <string name="welCom">Bienvenue Commercant !\n Vous pouvez rajouter votre commerce.</string>
     <string name="nameShop">Nom du commerce</string>
-    <string name="typeShop">Description commerce</string>
+    <string name="typeShop">Type d\'établissement</string>
     <string name="adressShop">Adresse de votre commerce</string>
     <string name="addShop">Demande d\'ajout</string>
     <string name="popTitle">This is a popup window.</string>
@@ -21,7 +21,7 @@
     <string name="content">Content</string>
     <string name="email">Email</string>
     <string name="tel">Telephone</string>
-    <string name="url">Lien du site</string>
+    <string name="url">URL du site</string>
     <string name="inscription">S\'inscrire</string>
     <string name="nom">Nom</string>
     <string name="prenom">Prenom</string>

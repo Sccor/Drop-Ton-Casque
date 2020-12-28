@@ -6,46 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".ComActivity">
 
+
+    <EditText
+        android:id="@+id/comUrl"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:hint="@string/url"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comTel"
+        app:layout_constraintVertical_bias="0.076"
+        tools:ignore="TextFields" />
+
     <Button
         android:id="@+id/button_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Menu"
+        android:text="@string/menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.971" />
 
+    <Button
+        android:id="@+id/testQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View ALL"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="245dp"
-        android:layout_height="57dp"
+        android:layout_width="223dp"
+        android:layout_height="45dp"
         android:gravity="center"
         android:text="@string/welCom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.148" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/comNom"
         android:layout_width="262dp"
         android:layout_height="53dp"
         android:hint="@string/nameShop"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
+        app:layout_constraintVertical_bias="0.125" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/comType"
         android:layout_width="266dp"
         android:layout_height="52dp"
         android:hint="@string/typeShop"
@@ -54,31 +80,60 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintTop_toBottomOf="@+id/comNom"
+        app:layout_constraintVertical_bias="0.035" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/comAdresse"
         android:layout_width="264dp"
         android:layout_height="53dp"
         android:hint="@string/adressShop"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:layout_constraintVertical_bias="0.09" />
+        app:layout_constraintTop_toBottomOf="@+id/comType"
+        app:layout_constraintVertical_bias="0.038" />
+
+    <EditText
+        android:id="@+id/comEmail"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comAdresse"
+        app:layout_constraintVertical_bias="0.027" />
+
+    <EditText
+        android:id="@+id/comTel"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="196dp"
+        android:hint="@string/tel"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comEmail"
+        app:layout_constraintVertical_bias="0.324" />
 
     <Button
+        android:id="@+id/btnAjout"
         android:layout_width="149dp"
         android:layout_height="64dp"
         android:text="@string/addShop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.713"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
-        app:layout_constraintVertical_bias="0.27" />
+        app:layout_constraintTop_toBottomOf="@+id/comAdresse"
+        app:layout_constraintVertical_bias="0.937" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

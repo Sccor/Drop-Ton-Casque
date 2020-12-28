@@ -18,6 +18,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InscriptionActivity extends AppCompatActivity {
 
@@ -84,7 +85,6 @@ public class InscriptionActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
 }
