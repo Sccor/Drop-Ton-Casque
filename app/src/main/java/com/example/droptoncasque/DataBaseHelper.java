@@ -4,8 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
+import java.util.stream.Collectors;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -34,6 +38,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public boolean addOne(UserModel newUser, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -42,6 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_PRENOM, newUser.getPrenom());
         cv.put(COLUMN_USER_EMAIL, newUser.getEmail());
         cv.put(COLUMN_USER_FONCTION, newUser.getFonction());
+        cv.put(COLUMN_USER_FAVORIS, newUser.getFavoris().stream().map(Object::toString).collect(Collectors.joining(", ")));
         cv.put(COLUMN_USER_PASSWORD, password);
 
         long insert = db.insert(USERS_TABLE, null, cv);
