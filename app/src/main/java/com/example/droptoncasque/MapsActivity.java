@@ -38,7 +38,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button menu;
     private ArrayList<CommerceModel> commerces;
 
-    public class Pair<S, I>{
+    public static class Pair<S, I>{
         private S s;
         private I i;
 
@@ -53,14 +53,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         @Override
         public String toString() {
-            return "(" + s + ", " + i + ")";
+            return s + "; " + i;
         }
     }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        CommerceModel efrei = new CommerceModel(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/");
+        CommerceModel efrei = new CommerceModel(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif","admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
         System.out.println(efrei);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
@@ -86,7 +86,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         CommerceModel efrei = null;
         int index = 0;
-        efrei = new CommerceModel(-1, "Efrei PARIS", "Ecole d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992), "admissions@efrei.fr", "+33 188 289 000", "https://www.efrei.fr/");
+        efrei = new CommerceModel(-1, "Efrei PARIS", "Ecole d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", "admissions@efrei.fr", "+33 188 289 000", "https://www.efrei.fr/", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(true);
@@ -110,7 +110,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         System.out.println(marker);
         System.out.println("Heyy");
-        CommerceModel efrei = new CommerceModel(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", new Pair<Double, Double>(48.788759834312756, 2.363766951205992),"admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/");
+        CommerceModel efrei = new CommerceModel(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif","admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
         Toast.makeText(this, "Info window clicked",
                 Toast.LENGTH_SHORT).show();
 

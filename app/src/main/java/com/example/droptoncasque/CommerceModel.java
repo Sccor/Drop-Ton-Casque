@@ -10,7 +10,7 @@ public class CommerceModel {
     private String contact_telephone;
     private String url;
 
-    public CommerceModel(Integer id, String nom, String type, String adresse, MapsActivity.Pair<Double, Double> coord, String contact_email, String contact_telephone, String url) {
+    public CommerceModel(Integer id, String nom, String type, String adresse, String contact_email, String contact_telephone, String url, MapsActivity.Pair<Double, Double> coord) {
         this.id = id;
         this.nom = nom;
         this.type = type;
@@ -20,6 +20,17 @@ public class CommerceModel {
         this.contact_telephone = contact_telephone;
         this.url = url;
 
+    }
+
+    public CommerceModel() {
+        this.id = -1;
+        this.nom = null;
+        this.type = null;
+        this.adresse = null;
+        this.coord = null;
+        this.contact_email= null;
+        this.contact_telephone = null;
+        this.url = null;
     }
 
     public String getNom() {

@@ -3,6 +3,7 @@ package com.example.droptoncasque;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,9 +13,11 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InscriptionActivity extends AppCompatActivity {
 
@@ -24,6 +27,7 @@ public class InscriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Button btnInsc = (Button) findViewById(R.id.btnInscri);
         Button menu = (Button) findViewById(R.id.button_menu);
+        Button testQuery = (Button) findViewById(R.id.testQuery);
         EditText Nom = findViewById(R.id.PersonName);
         EditText Prenom = findViewById(R.id.PersonSurname);
         EditText Email = findViewById(R.id.EmailAddress);
@@ -54,6 +58,7 @@ public class InscriptionActivity extends AppCompatActivity {
         });
 
         btnInsc.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view){
                 UserModel newUser;
@@ -76,7 +81,14 @@ public class InscriptionActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        testQuery.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                DataBaseCommerces dataBC = new DataBaseCommerces(InscriptionActivity.this);
+                List<CommerceModel> everyone = dataBC.getAllCommerces();
+                Toast.makeText(InscriptionActivity.this, (CharSequence) everyone,Toast.LENGTH_LONG);
+            }
+        });
     }
 
 }
