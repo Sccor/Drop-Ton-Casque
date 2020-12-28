@@ -36,8 +36,6 @@ public class ComActivity extends AppCompatActivity {
         EditText Adresse = findViewById(R.id.comAdresse);
         EditText Url = findViewById(R.id.comUrl);
 
-
-
         menu.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -51,7 +49,9 @@ public class ComActivity extends AppCompatActivity {
             public void onClick(View view){
                 DataBaseCommerces dataBC = new DataBaseCommerces(ComActivity.this);
                 List<CommerceModel> everyone = dataBC.getAllCommerces();
-                Toast.makeText(ComActivity.this, everyone.toString(), Toast.LENGTH_LONG);
+                Toast valid = Toast.makeText(ComActivity.this, everyone.toString(), Toast.LENGTH_LONG);
+                valid.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
+                valid.show();
             }
         });
 
@@ -61,7 +61,7 @@ public class ComActivity extends AppCompatActivity {
             public void onClick(View view){
                 CommerceModel newCommerce;
                 try {
-                    newCommerce = new CommerceModel(-1, Nom.getText().toString(), Type.getText().toString(), Adresse.getText().toString(), Email.getText().toString(), Tel.getText().toString(), Url.getText().toString(), new MapsActivity.Pair<Double, Double>(48.79, (Double)(Math.random() * ((2.40 - 2.35)+1)+2.35)));
+                    newCommerce = new CommerceModel(-1, Nom.getText().toString(), Type.getText().toString(), Adresse.getText().toString(), Email.getText().toString(), Tel.getText().toString(), Url.getText().toString(), new MapsActivity.Pair<Double, Double>(48.79, (Double)(Math.random() * ((2.40 - 2.35)+1))+2.35));
                     DataBaseCommerces dbHelper = new DataBaseCommerces(ComActivity.this);
                     final boolean success = dbHelper.addOne(newCommerce);
                     Toast valid = Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_SHORT);

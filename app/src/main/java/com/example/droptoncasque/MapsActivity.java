@@ -2,10 +2,12 @@ package com.example.droptoncasque;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -60,8 +62,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        CommerceModel efrei = new CommerceModel(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif","admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
-        System.out.println(efrei);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -82,21 +82,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onMapReady(GoogleMap googleMap) {
         CommerceModel efrei = null;
         int index = 0;
         efrei = new CommerceModel(-1, "Efrei PARIS", "Ecole d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", "admissions@efrei.fr", "+33 188 289 000", "https://www.efrei.fr/", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
+        LatLng posEfrei = new LatLng(efrei.getCoord().getS(), efrei.getCoord().getI());
         mMap = googleMap;
+        DataBaseCommerces dataBC = new DataBaseCommerces(MapsActivity.this);
+        List<CommerceModel> everyone = dataBC.getAllCommerces();
+        for (CommerceModel commerce : everyone){
+            LatLng pos = new LatLng(commerce.getCoord().getS(), commerce.getCoord().getI());
+            mMap.addMarker(new MarkerOptions()
+                    .position(pos)
+                    .snippet(commerce.getAdresse() + "\n Cliquez pour plus d'informations")
+                    .title(commerce.getNom()));
+        }
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        LatLng posEfrei = new LatLng(efrei.getCoord().getS(), efrei.getCoord().getI());
-        mMap.addMarker(new MarkerOptions()
-                .position(posEfrei)
-                .snippet(efrei.getAdresse() + "\n Cliquez pour plus d'informations")
-                .title(efrei.getNom()));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(posEfrei));
         float zoomLevel = 16.0f;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posEfrei, zoomLevel));
