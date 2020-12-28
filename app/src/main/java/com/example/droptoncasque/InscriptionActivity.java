@@ -27,7 +27,6 @@ public class InscriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Button btnInsc = (Button) findViewById(R.id.btnInscri);
         Button menu = (Button) findViewById(R.id.button_menu);
-        Button testQuery = (Button) findViewById(R.id.testQuery);
         EditText Nom = findViewById(R.id.PersonName);
         EditText Prenom = findViewById(R.id.PersonSurname);
         EditText Email = findViewById(R.id.EmailAddress);
@@ -79,14 +78,6 @@ public class InscriptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 finish();
-            }
-        });
-        testQuery.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                DataBaseCommerces dataBC = new DataBaseCommerces(InscriptionActivity.this);
-                List<CommerceModel> everyone = dataBC.getAllCommerces();
-                Toast.makeText(InscriptionActivity.this, (CharSequence) everyone,Toast.LENGTH_LONG);
             }
         });
     }
