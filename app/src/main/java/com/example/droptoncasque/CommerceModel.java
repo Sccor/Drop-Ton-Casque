@@ -9,8 +9,9 @@ public class CommerceModel {
     private String contact_email;
     private String contact_telephone;
     private String url;
+    private String horaire;
 
-    public CommerceModel(Integer id, String nom, String type, String adresse, String contact_email, String contact_telephone, String url, MapsActivity.Pair<Double, Double> coord) {
+    public CommerceModel(Integer id, String nom, String type, String adresse, String contact_email, String contact_telephone, String url, String horaire, MapsActivity.Pair<Double, Double> coord) {
         this.id = id;
         this.nom = nom;
         this.type = type;
@@ -19,7 +20,7 @@ public class CommerceModel {
         this.contact_email= contact_email;
         this.contact_telephone = contact_telephone;
         this.url = url;
-
+        this.horaire = horaire;
     }
 
     public CommerceModel() {
@@ -31,6 +32,7 @@ public class CommerceModel {
         this.contact_email= null;
         this.contact_telephone = null;
         this.url = null;
+        this.horaire = null;
     }
 
     public String getNom() {
@@ -97,6 +99,14 @@ public class CommerceModel {
         this.url = url;
     }
 
+    public String getHoraire() {
+        return horaire;
+    }
+
+    public void setHoraire(String horaire) {
+        this.horaire = horaire;
+    }
+
     @Override
     public String toString() {
         return "CommerceModel{" +
@@ -108,6 +118,7 @@ public class CommerceModel {
                 ", contact_email='" + contact_email + '\'' +
                 ", contact_telephone='" + contact_telephone + '\'' +
                 ", url='" + url + '\'' +
+                ", horaire='" + horaire + '\'' +
                 '}';
     }
 }

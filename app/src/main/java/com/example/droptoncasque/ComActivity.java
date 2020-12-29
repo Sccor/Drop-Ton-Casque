@@ -34,6 +34,7 @@ public class ComActivity extends AppCompatActivity {
         EditText Tel = findViewById(R.id.comTel);
         EditText Adresse = findViewById(R.id.comAdresse);
         EditText Url = findViewById(R.id.comUrl);
+        EditText Horaires = findViewById(R.id.comHoraire);
 
         menu.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -60,14 +61,14 @@ public class ComActivity extends AppCompatActivity {
             public void onClick(View view){
                 CommerceModel newCommerce;
                 try {
-                    newCommerce = new CommerceModel(-1, Nom.getText().toString(), Type.getText().toString(), Adresse.getText().toString(), Email.getText().toString(), Tel.getText().toString(), Url.getText().toString(), new MapsActivity.Pair<Double, Double>(48.79, (Double)(Math.random() * ((2.40 - 2.35)+1))+2.35));
+                    newCommerce = new CommerceModel(-1, Nom.getText().toString(), Type.getText().toString(), Adresse.getText().toString(), Email.getText().toString(), Tel.getText().toString(), Url.getText().toString(), Horaires.getText().toString(), new MapsActivity.Pair<Double, Double>(48.79, (Double)(Math.random() * ((2.40 - 2.35)+1))+2.35));
                     final boolean success = dbHelper.addOne(newCommerce);
                     Toast valid = Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_SHORT);
                     valid.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                     valid.show();
 
                 } catch (Exception e) {
-                    newCommerce = new CommerceModel(-1, "error", null, null, null, null, null, null);
+                    newCommerce = new CommerceModel(-1, "error", null, null, null, null,null, null, null);
                     Toast wrong = Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT);
                     wrong.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                     wrong.show();

@@ -21,6 +21,19 @@
         app:layout_constraintVertical_bias="0.076"
         tools:ignore="TextFields" />
 
+    <EditText
+        android:id="@+id/comHoraire"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="100dp"
+        android:hint="@string/horaire"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextFields" />
+
     <Button
         android:id="@+id/button_menu"
         android:layout_width="wrap_content"
@@ -28,10 +41,10 @@
         android:text="@string/menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.971" />
+        app:layout_constraintVertical_bias="0.951" />
 
     <Button
         android:id="@+id/testQuery"
@@ -40,22 +53,23 @@
         android:text="View ALL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
+        app:layout_constraintVertical_bias="0.028" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="223dp"
-        android:layout_height="45dp"
+        android:layout_width="220dp"
+        android:layout_height="62dp"
         android:gravity="center"
         android:text="@string/welCom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintVertical_bias="0.011" />
 
     <EditText
         android:id="@+id/comNom"

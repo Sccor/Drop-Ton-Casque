@@ -85,10 +85,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        CommerceModel efrei = null;
         int index = 0;
-        efrei = new CommerceModel(-1, "Efrei PARIS", "Ecole d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif", "admissions@efrei.fr", "+33 188 289 000", "https://www.efrei.fr/", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
-        LatLng posEfrei = new LatLng(efrei.getCoord().getS(), efrei.getCoord().getI());
+        LatLng posEfrei = new LatLng(48.788759834312756, 2.363766951205992);
         mMap = googleMap;
         DataBaseCommerces dataBC = new DataBaseCommerces(MapsActivity.this);
         List<CommerceModel> everyone = dataBC.getAllCommerces();
@@ -112,11 +110,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        System.out.println(marker);
 
-        System.out.println(marker);
-        System.out.println("Heyy");
-        CommerceModel efrei = new CommerceModel(1,"Efrei Paris", "École d'ingénieur", "30- 32 Avenue de la République 94800 Villejuif","admissions@efrei.fr" , "+33 188 289 000", "https://www.efrei.fr/", new Pair<Double, Double>(48.788759834312756, 2.363766951205992));
         Toast.makeText(this, "Info window clicked",
                 Toast.LENGTH_SHORT).show();
 

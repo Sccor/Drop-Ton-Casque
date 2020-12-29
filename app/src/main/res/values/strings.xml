@@ -27,6 +27,7 @@
     <string name="prenom">Prenom</string>
     <string name="confirm_pw">Confirmez le mot de passe</string>
     <string name="je_suis">Je suis</string>
+    <string name="horaire">Horaires</string>
 
 
 </resources>
