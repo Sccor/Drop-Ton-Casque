@@ -39,11 +39,11 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="horaire">Horaires</string>
 
     <string name="menu_home">Accueil</string>
     <string name="menu_login">Connexion</string>
     <string name="menu_register">S\'inscrire</string>
     <string name="menu_map">Carte</string>
-
 
 </resources>
