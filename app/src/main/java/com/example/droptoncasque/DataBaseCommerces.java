@@ -182,7 +182,6 @@ public class DataBaseCommerces extends SQLiteOpenHelper {
                 String commerceCoord = cursor.getString(8);
                 String[] arr = commerceCoord.split(",");
                 Double coord1 = Double.valueOf(arr[0]);
-                System.out.println(coord1);
                 Double coord2 = Double.valueOf(arr[1]);
 
                 MapsActivity.Pair<Double, Double> coord = new MapsActivity.Pair<Double, Double>(coord1, coord2);
@@ -199,5 +198,39 @@ public class DataBaseCommerces extends SQLiteOpenHelper {
         return commerces;
 
     }
+
+    public CommerceModel getCommerce(String nom){
+
+        String queryString = "SELECT * FROM " + COMMERCES_TABLE + " WHERE " +  COLUMN_COMMERCE_NOM + "=?";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, new String[]{nom});
+        CommerceModel newCommerce = null;
+        if(cursor.moveToFirst()){
+            int commerceId = cursor.getInt(0);
+            String commerceNom = cursor.getString(1);
+            System.out.println(commerceNom);
+            String commerceType = cursor.getString(2);
+            String commerceAdresse = cursor.getString(3);
+            String commerceEmail = cursor.getString(4);
+            String commerceTelephone = cursor.getString(5);
+            String commerceUrl = cursor.getString(6);
+            String commerceHoraire = cursor.getString(7);
+            String commerceCoord = cursor.getString(8);
+            String[] arr = commerceCoord.split(",");
+            Double coord1 = Double.valueOf(arr[0]);
+            System.out.println(coord1);
+            Double coord2 = Double.valueOf(arr[1]);
+            System.out.println(coord2);
+            MapsActivity.Pair<Double, Double> coord = new MapsActivity.Pair<Double, Double>(coord1, coord2);
+            newCommerce = new CommerceModel(commerceId, commerceNom, commerceType, commerceAdresse, commerceEmail, commerceTelephone, commerceUrl, commerceHoraire, coord);
+        }
+
+        cursor.close();
+        db.close();
+
+        return newCommerce;
+
+    }
+
 
 }

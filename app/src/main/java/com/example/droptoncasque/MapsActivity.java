@@ -5,8 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -94,7 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng pos = new LatLng(commerce.getCoord().getS(), commerce.getCoord().getI());
             mMap.addMarker(new MarkerOptions()
                     .position(pos)
-                    .snippet(commerce.getAdresse() + "\n Cliquez pour plus d'informations")
+                    .snippet(commerce.getAdresse())
                     .title(commerce.getNom()));
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
@@ -111,48 +113,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onInfoWindowClick(Marker marker) {
 
-        Toast.makeText(this, "Info window clicked",
-                Toast.LENGTH_SHORT).show();
-
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
-        assert inflater != null;
-        View popupView = inflater.inflate(R.layout.popup_window, null);
-//            TextView comTitle = (TextView) findViewById(R.id.com_title);
-//            System.out.println(efrei);
-//            comTitle.setText("Efrei PARIS");
-            // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                TextView title = (TextView) findViewById(R.id.com_title);
-//                title.setText(efrei.getNom());
-//                TextView type = (TextView) findViewById(R.id.com_type);
-//                type.setText(efrei.getNom());
-//                TextView content = (TextView) findViewById(R.id.com_content);
-//                content.setText(efrei.getNom());
-//                TextView email = (TextView) findViewById(R.id.com_email);
-//                email.setText(efrei.getContact_email());
-//                TextView tel = (TextView) findViewById(R.id.com_telephone);
-//                tel.setText(efrei.getContact_telephone());
-//                TextView url = (TextView) findViewById(R.id.com_url);
-//                url.setText(efrei.getNom());
-//            }
-//        });
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+        Intent infoActivity = new Intent(getApplicationContext(), ComInfoActivity.class);
+        infoActivity.putExtra("title", marker.getTitle());
+        startActivity(infoActivity);
 
 
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
-            }
-        });
-        }
+    }
 }
