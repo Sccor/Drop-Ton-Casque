@@ -1,13 +1,15 @@
 package com.example.droptoncasque;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ParticulierActivity extends AppCompatActivity {
+public class ParticulierActivity extends FragmentActivity {
 
     private Button map;
     @Override

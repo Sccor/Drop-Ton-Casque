@@ -51,7 +51,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_PRENOM, newUser.getPrenom());
         cv.put(COLUMN_USER_EMAIL, newUser.getEmail());
         cv.put(COLUMN_USER_FONCTION, newUser.getFonction());
-        cv.put(COLUMN_USER_FAVORIS, newUser.getFavoris().stream().map(Object::toString).collect(Collectors.joining(", ")));
+        if (newUser.getFavoris() != null){
+            cv.put(COLUMN_USER_FAVORIS, newUser.getFavoris().stream().map(Object::toString).collect(Collectors.joining(", ")));
+        }else{
+            cv.put(COLUMN_USER_FAVORIS, "");
+
+        }
         cv.put(COLUMN_USER_PASSWORD, BCrypt.hashpw(password, BCrypt.gensalt()));
 
         long insert = db.insert(USERS_TABLE, null, cv);

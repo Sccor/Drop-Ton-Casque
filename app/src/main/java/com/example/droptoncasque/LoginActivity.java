@@ -42,12 +42,11 @@ public class LoginActivity extends AppCompatActivity {
     Button menu;
     Window window;
 
-    @SuppressLint("WrongConstant")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+
+    public void onCreate(Bundle savedInstanceState) {
         SQLiteDatabase db = null;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.fragment_login);
         this.textSwitch = (TextView) findViewById(R.id.textSwitch);
         this.switch1 = (Switch) findViewById(R.id.switch1);
         this.mailInput = (EditText) findViewById(R.id.editTextTextEmailAddress);

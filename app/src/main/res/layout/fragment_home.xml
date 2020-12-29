@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent" >
 
     <TextView
         android:id="@+id/textView2"
@@ -45,16 +44,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/menu"
-        android:layout_width="48dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/menu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/logBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,5 +65,5 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.031" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
 
+</androidx.constraintlayout.widget.ConstraintLayout>

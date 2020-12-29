@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button log;
     private Button map;
     private Button inscri;
+    private Button menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +26,22 @@ public class MainActivity extends AppCompatActivity {
         this.log = (Button) findViewById(R.id.logBut);
         this.map = (Button) findViewById(R.id.map_button);
         this.inscri = (Button) findViewById(R.id.inscriBut);
+        this.menu = (Button) findViewById(R.id.menu);
+
         log.setOnClickListener(new View.OnClickListener(){
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view){
                 Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginActivity);
+            }
+        });
+        menu.setOnClickListener(new View.OnClickListener(){
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view){
+                Intent NavigationActivity = new Intent(getApplicationContext(), NavigationActivity.class);
+                startActivity(NavigationActivity);
             }
         });
         map.setOnClickListener(new View.OnClickListener(){

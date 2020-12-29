@@ -1,12 +1,13 @@
-package com.example.droptoncasque;
+package com.example.droptoncasque.ui.register;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -14,26 +15,37 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.droptoncasque.DataBaseHelper;
+import com.example.droptoncasque.InscriptionActivity;
+import com.example.droptoncasque.R;
+import com.example.droptoncasque.UserModel;
 
-public class InscriptionActivity extends AppCompatActivity {
+public class RegisterFragment extends Fragment {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_inscription);
+    private RegisterViewModel registerViewModel;
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+            ViewGroup container, Bundle savedInstanceState) {
+        registerViewModel =
+                new ViewModelProvider(this).get(RegisterViewModel.class);
+        View view = inflater.inflate(R.layout.fragment_register, container, false);
+
         super.onCreate(savedInstanceState);
-        Button btnInsc = (Button) findViewById(R.id.btnInscri);
-        EditText Nom = findViewById(R.id.PersonName);
-        EditText Prenom = findViewById(R.id.PersonSurname);
-        EditText Email = findViewById(R.id.EmailAddress);
-        EditText Mdp = findViewById(R.id.Password1);
-        EditText Cmdp = findViewById(R.id.Password2);
-        TextView textSwitch = (TextView) findViewById(R.id.textSwitch);
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch1 = (Switch) findViewById(R.id.switch1);
+        Button btnInsc = (Button) view.findViewById(R.id.btnInscri);
+        EditText Nom = view.findViewById(R.id.PersonName);
+        EditText Prenom = view.findViewById(R.id.PersonSurname);
+        EditText Email = view.findViewById(R.id.EmailAddress);
+        EditText Mdp = view.findViewById(R.id.Password1);
+        EditText Cmdp = view.findViewById(R.id.Password2);
+        TextView textSwitch = (TextView) view.findViewById(R.id.textSwitch);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch1 = (Switch) view.findViewById(R.id.switch1);
 
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @SuppressLint("SetTextI18n")
@@ -44,7 +56,7 @@ public class InscriptionActivity extends AppCompatActivity {
                     btnInsc.setTextColor(Color.parseColor("#000000"));
                 } else {
                     textSwitch.setText("Commerçant");
-                    getTheme().applyStyle(R.style.OverlayThemeMain, true);
+                    getActivity().getTheme().applyStyle(R.style.OverlayThemeMain, true);
                     btnInsc.setBackgroundColor(Color.parseColor("#AD0C0A"));
                     btnInsc.setTextColor(Color.parseColor("#FFFFFF"));
 
@@ -60,20 +72,22 @@ public class InscriptionActivity extends AppCompatActivity {
                 try {
                     if(Mdp.getText().toString().equals(Cmdp.getText().toString())){
                         newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), textSwitch.getText().toString().equals("Particulier"), null);
-                        DataBaseHelper dbHelper = new DataBaseHelper(InscriptionActivity.this);
+                        DataBaseHelper dbHelper = new DataBaseHelper(getActivity().getApplicationContext());
                         dbHelper.addOne(newUser, Mdp.getText().toString());
-                        Toast valid = Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT);
+                        Toast valid = Toast.makeText(getActivity().getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT);
                         valid.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                         valid.show();
                     }
                 } catch (Exception e) {
+                    e.printStackTrace();
                     newUser = new UserModel(-1, "error", "e", "error", true, null);
-                    Toast wrong = Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT);
+                    Toast wrong = Toast.makeText(getActivity().getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT);
                     wrong.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                     wrong.show();
                 }
             }
         });
-    }
 
+        return view;
+    }
 }

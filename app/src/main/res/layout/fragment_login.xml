@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity" >
+
+    <TextView
+        android:id="@+id/textSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="@string/com"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toStartOf="@+id/switch1"
+        app:layout_constraintHorizontal_bias="0.779"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="wrap_content"
+        android:hint="@string/pw"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="154dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="256dp"
+        android:text="@string/login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="wrap_content"
+        android:hint="@string/mail"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="53dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="36dp"
+        android:checked="false"
+        android:scaleX="1.7"
+        android:scaleY="1.7"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
