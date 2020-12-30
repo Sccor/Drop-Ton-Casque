@@ -86,7 +86,7 @@ public class DataBaseCommerces extends SQLiteOpenHelper {
         insert = db.insert(COMMERCES_TABLE, null, cv);
 
         cv = new ContentValues();
-        cv.put(COLUMN_COMMERCE_NOM, "Centre de lavage Auto/moto Novajet Villejuif");
+        cv.put(COLUMN_COMMERCE_NOM, "Novajet Villejuif");
         cv.put(COLUMN_COMMERCE_TYPE, "Centre de Lavage");
         cv.put(COLUMN_COMMERCE_ADRESSE, "88 Rue Auguste Perret, 94800 Villejuif");
         cv.put(COLUMN_COMMERCE_CONTACT_EMAIL, "Inconnu");

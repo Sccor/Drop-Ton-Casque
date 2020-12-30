@@ -25,7 +25,6 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 
 import com.example.droptoncasque.ComActivity;
 import com.example.droptoncasque.DataBaseHelper;
@@ -48,10 +47,8 @@ public class LoginFragment extends Fragment {
     private Button log;
     private Window window;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-            ViewGroup container, Bundle savedInstanceState) {
-        loginViewModel =
-                new ViewModelProvider(this).get(LoginViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         this.textSwitch = (TextView) view.findViewById(R.id.textSwitch);
         this.switch1 = (Switch) view.findViewById(R.id.switch1);

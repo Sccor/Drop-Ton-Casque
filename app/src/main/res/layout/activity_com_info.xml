@@ -9,11 +9,12 @@
 
     <TextView
         android:id="@+id/infoNom"
-        android:layout_width="242dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="238dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:gravity="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -95,4 +96,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoUrl"
         app:layout_constraintVertical_bias="0.224" />
+
+    <Button
+        android:id="@+id/btnFav"
+        android:layout_width="177dp"
+        android:layout_height="60dp"
+        android:text="@string/addFav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infoHoraire" />
 </androidx.constraintlayout.widget.ConstraintLayout>
