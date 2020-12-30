@@ -43,6 +43,7 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".LoginActivity" android:theme="@style/Theme.DropTonCasque.NoActionBar"/>
         <activity android:name=".ComActivity" android:theme="@style/Theme.DropTonCasque.NoActionBar"/>
+        <activity android:name=".ComInfoActivity" android:theme="@style/Theme.DropTonCasque.NoActionBar"/>
         <activity android:name=".ParticulierActivity" android:theme="@style/Theme.DropTonCasque.NoActionBar"/>
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.DropTonCasque.NoActionBar" >
