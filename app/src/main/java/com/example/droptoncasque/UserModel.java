@@ -1,6 +1,8 @@
 package com.example.droptoncasque;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UserModel {
     private int id;
@@ -10,13 +12,29 @@ public class UserModel {
     private Boolean fonction; //true == particulier, false == commerçant
     private ArrayList<Integer> favoris;
 
-    public UserModel(int id, String nom, String prenom, String email, Boolean fonction, ArrayList<Integer> favs) {
+    public UserModel(int id, String nom, String prenom, String email, Integer fonction, String favs) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        this.fonction = fonction;
-        this.favoris = favs;
+
+        if(fonction == 1){
+            this.fonction = true;
+        }else{
+            this.fonction = false;
+        }
+
+        ArrayList<Integer> favoris = new ArrayList<>();
+        if (favs.equals("")){
+            favoris = null;
+        }else {
+            ArrayList<String> arr = new ArrayList<String>(Arrays.asList(favs.split(",")));
+            for (String currentId : arr) {
+                favoris.add(Integer.parseInt(currentId));
+            }
+        }
+
+        this.favoris = favoris;
     }
 
     public UserModel() {

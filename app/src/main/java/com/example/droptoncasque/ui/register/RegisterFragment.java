@@ -27,14 +27,14 @@ import com.example.droptoncasque.InscriptionActivity;
 import com.example.droptoncasque.R;
 import com.example.droptoncasque.UserModel;
 
-public class RegisterFragment extends Fragment {
+public class RegisterFragment extends Fragment,  {
 
     private RegisterViewModel registerViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         registerViewModel =
-                new ViewModelProvider(this).get(RegisterViewModel.class);
+                new ViewModelProvider().get(RegisterViewModel.class);
         View view = inflater.inflate(R.layout.fragment_register, container, false);
 
         super.onCreate(savedInstanceState);
@@ -71,7 +71,11 @@ public class RegisterFragment extends Fragment {
                 UserModel newUser;
                 try {
                     if(Mdp.getText().toString().equals(Cmdp.getText().toString())){
-                        newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), textSwitch.getText().toString().equals("Particulier"), null);
+                        if(textSwitch.getText().toString().equals("Particulier")){
+                            newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), 1, null);
+                        }else{
+                            newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), 0, null);
+                        }
                         DataBaseHelper dbHelper = new DataBaseHelper(getActivity().getApplicationContext());
                         dbHelper.addOne(newUser, Mdp.getText().toString());
                         Toast valid = Toast.makeText(getActivity().getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT);
@@ -80,7 +84,7 @@ public class RegisterFragment extends Fragment {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    newUser = new UserModel(-1, "error", "e", "error", true, null);
+                    newUser = new UserModel(-1, "error", "e", "error", 1, null);
                     Toast wrong = Toast.makeText(getActivity().getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT);
                     wrong.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                     wrong.show();

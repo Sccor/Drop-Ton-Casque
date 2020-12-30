@@ -59,7 +59,11 @@ public class InscriptionActivity extends AppCompatActivity {
                 UserModel newUser;
                 try {
                     if(Mdp.getText().toString().equals(Cmdp.getText().toString())){
-                        newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), textSwitch.getText().toString().equals("Particulier"), null);
+                        if(textSwitch.getText().toString().equals("Particulier")){
+                            newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), 1, null);
+                        }else{
+                            newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), 0, null);
+                        }
                         DataBaseHelper dbHelper = new DataBaseHelper(InscriptionActivity.this);
                         dbHelper.addOne(newUser, Mdp.getText().toString());
                         Toast valid = Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT);
@@ -67,7 +71,7 @@ public class InscriptionActivity extends AppCompatActivity {
                         valid.show();
                     }
                 } catch (Exception e) {
-                    newUser = new UserModel(-1, "error", "e", "error", true, null);
+                    newUser = new UserModel(-1, "error", "e", "error", 1, null);
                     Toast wrong = Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT);
                     wrong.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                     wrong.show();
