@@ -40,10 +40,14 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="horaire">Horaires</string>
+    <string name="user_page">Voici votre page d\'accueil ! D\'ici, vous pouvez accéder à la carte, à votre liste de favoris ou aux paramètres</string>
 
+
+    <string name="menu_user">Votre profil</string>
     <string name="menu_home">Accueil</string>
     <string name="menu_login">Connexion</string>
     <string name="menu_register">S\'inscrire</string>
     <string name="menu_map">Carte</string>
+    <string name="menu_com">Votre commerce</string>
 
 </resources>

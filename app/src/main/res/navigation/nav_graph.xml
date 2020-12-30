@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.droptoncasque.ui.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_comFragment"
+            app:destination="@id/comFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.droptoncasque.ui.user.UserFragment"
+        android:label="UserFragment" />
+    <fragment
+        android:id="@+id/comFragment"
+        android:name="com.example.droptoncasque.ui.com.comFragment"
+        android:label="fragment_com"
+        tools:layout="@layout/fragment_com" />
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.example.droptoncasque.MapsActivity"
+        android:label="MapsActivity" />
+</navigation>
