@@ -96,7 +96,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_EMAIL, newUser.getEmail());
         cv.put(COLUMN_USER_FONCTION, newUser.getFonction());
         if (newUser.getFavoris() != null){
-            cv.put(COLUMN_USER_FAVORIS, newUser.getFavoris().stream().map(Object::toString).collect(Collectors.joining(", ")));
+            cv.put(COLUMN_USER_FAVORIS, newUser.getFavoris().stream().map(Object::toString).collect(Collectors.joining(",")));
         }else{
             cv.put(COLUMN_USER_FAVORIS, "");
 
@@ -137,12 +137,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()) {
                 oldFavoris = cursor.getString(6);
             }
-            String newFavoris = oldFavoris + "," + idNewFav;
-            queryString = "UPDATE USERS_TABLE SET " + COLUMN_USER_FAVORIS + "=? WHERE " + COLUMN_USER_ID + "=?";
-            System.out.println(new String[]{newFavoris, String.valueOf(userId)});
-            db.rawQuery(queryString, new String[]{newFavoris, userId.toString()});
-            System.out.println("J'AJOUTE !!!!");
+            String newFavoris = "";
+            System.out.println("OLD : " + oldFavoris);
 
+            if(oldFavoris.equals("")){
+                newFavoris = idNewFav.toString();
+            }else{
+                newFavoris = oldFavoris + "," + idNewFav;
+            }
+
+            queryString = "UPDATE USERS_TABLE SET USER_FAVORIS=\"" + newFavoris + "\" WHERE USER_ID=" + userId.toString();
+            db.execSQL(queryString);
+//            db.rawQuery(queryString, new String[]{newFavoris});
+            System.out.println("J'AJOUTE !!!!");
+            System.out.println(newFavoris +"\n" + userId.toString());
+
+
+            cursor.close();
+            db.close();
             return true;
         }catch(Exception e){
             return false;
@@ -162,6 +174,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String userEmail = cursor.getString(3);
             Integer userFonction = cursor.getInt(5);
             String userFavoris = cursor.getString(6);
+            System.out.println("USER FAVORIS : " + userFavoris);
             newUser = new UserModel(id, userNom, userPrenom, userEmail, userFonction, userFavoris);
         }
 

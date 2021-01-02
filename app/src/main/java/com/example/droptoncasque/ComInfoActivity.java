@@ -39,8 +39,6 @@ public class ComInfoActivity  extends AppCompatActivity {
         DataBaseCommerces dataBC = new DataBaseCommerces(ComInfoActivity.this);
         DataBaseHelper dataUS = new DataBaseHelper(ComInfoActivity.this);
         CommerceModel commerce = dataBC.getCommerce(nom);
-        Toast.makeText(this, commerce.toString(),
-            Toast.LENGTH_LONG).show();
 
         infoNom.setText(commerce.getNom());
         infoType.setText(commerce.getType());
