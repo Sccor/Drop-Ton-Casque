@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
@@ -73,9 +74,40 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.action_logout:
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.clear();
+                editor.apply();
+                finish();
+                startActivity(getIntent());
+                return true;
+            case R.id.action_settings:
+
+                return true;
+            default:
+
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        MenuItem item = toolbar.getMenu().findItem(R.id.action_logout);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        item.setVisible(sharedPref.contains("User_Role"));
+        super.onPrepareOptionsMenu(menu);
+        return true;
     }
 }

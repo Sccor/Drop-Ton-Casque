@@ -16,6 +16,13 @@
             android:id="@+id/nav_register"
             android:icon="@drawable/ic_menu_register"
             android:title="@string/menu_register" />
-
+        <item
+            android:id="@+id/nav_user"
+            android:icon="@drawable/ic_menu_user"
+            android:title="@string/menu_user" />
+        <item
+            android:id="@+id/nav_com"
+            android:icon="@drawable/ic_menu_com"
+            android:title="@string/menu_com" />
     </group>
 </menu>

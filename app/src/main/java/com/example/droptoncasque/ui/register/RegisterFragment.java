@@ -27,14 +27,14 @@ import com.example.droptoncasque.InscriptionActivity;
 import com.example.droptoncasque.R;
 import com.example.droptoncasque.UserModel;
 
-public class RegisterFragment extends Fragment,  {
+public class RegisterFragment extends Fragment {
 
     private RegisterViewModel registerViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         registerViewModel =
-                new ViewModelProvider().get(RegisterViewModel.class);
+                new ViewModelProvider(this).get(RegisterViewModel.class);
         View view = inflater.inflate(R.layout.fragment_register, container, false);
 
         super.onCreate(savedInstanceState);
