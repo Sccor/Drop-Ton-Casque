@@ -71,10 +71,13 @@ public class ComInfoActivity  extends AppCompatActivity {
             public void onClick(View view){
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 Integer userId = sharedPref.getInt("User_ID", -1);
+                System.out.println("Avant ajout : " + dataUS.getUser(userId));
                 Boolean success = dataUS.addFavoris(userId, commerce.getId());
-                Toast.makeText(ComInfoActivity.this, dataUS.getUser(userId).toString(), Toast.LENGTH_LONG).show();
+                System.out.println("Après ajout : " + dataUS.getUser(userId));
+//                Toast.makeText(ComInfoActivity.this, dataUS.getUser(userId).toString(), Toast.LENGTH_LONG).show();
             }
         });
+
     }
 
 

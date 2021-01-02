@@ -117,11 +117,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, new String[] {mail});
         UserModel loggedUser = null;
+        System.out.println("CURSOR : " + cursor);
         if(cursor.moveToFirst() && BCrypt.checkpw(pw, cursor.getString(4))){
              loggedUser = new UserModel(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
                      cursor.getString(3), cursor.getInt(5), cursor.getString(6));
         }
-        System.out.println("\n\n\n user found : " + loggedUser + "\n\n\n");
+        System.out.println("\n\n\n User found : " + loggedUser + "\n\n\n");
         cursor.close();
         db.close();
         return loggedUser;
@@ -137,9 +138,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 oldFavoris = cursor.getString(6);
             }
             String newFavoris = oldFavoris + "," + idNewFav;
-
-            queryString = "UPDATE USERS_TABLE SET " + COLUMN_USER_FAVORIS + "=" + newFavoris + " WHERE " + COLUMN_USER_ID + "=" + userId;
-
+            queryString = "UPDATE USERS_TABLE SET " + COLUMN_USER_FAVORIS + "=? WHERE " + COLUMN_USER_ID + "=?";
+            System.out.println(new String[]{newFavoris, String.valueOf(userId)});
+            db.rawQuery(queryString, new String[]{newFavoris, userId.toString()});
+            System.out.println("J'AJOUTE !!!!");
 
             return true;
         }catch(Exception e){
@@ -160,7 +162,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String userEmail = cursor.getString(3);
             Integer userFonction = cursor.getInt(5);
             String userFavoris = cursor.getString(6);
-
             newUser = new UserModel(id, userNom, userPrenom, userEmail, userFonction, userFavoris);
         }
 
