@@ -42,8 +42,8 @@
     <string name="horaire">Horaires</string>
     <string name="user_page">Voici votre page d\'accueil ! D\'ici, vous pouvez accéder à la carte, à votre liste de favoris ou aux paramètres</string>
     <string name="addFav">Ajouter à mes favoris</string>
+    <string name="Send">Réserver une place</string>
     <string name="action_logout">Déconnexion</string>
-
     <string name="menu_user">Votre profil</string>
     <string name="menu_home">Accueil</string>
     <string name="menu_login">Connexion</string>

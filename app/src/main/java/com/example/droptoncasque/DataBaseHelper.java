@@ -44,7 +44,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_EMAIL, "philippe.mangeard@efrei.net");
         cv.put(COLUMN_USER_FONCTION, 0);
         cv.put(COLUMN_USER_FAVORIS, "8");
-        cv.put(COLUMN_USER_PASSWORD, "admin");
+        cv.put(COLUMN_USER_PASSWORD, "123");
         long insert = db.insert(USERS_TABLE, null, cv);
 
         cv.put(COLUMN_USER_NOM, "MELINE");
@@ -52,7 +52,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_EMAIL, "stan.meline@efrei.net");
         cv.put(COLUMN_USER_FONCTION, 0);
         cv.put(COLUMN_USER_FAVORIS, "8");
-        cv.put(COLUMN_USER_PASSWORD, "admin");
+        cv.put(COLUMN_USER_PASSWORD, "123");
         insert = db.insert(USERS_TABLE, null, cv);
 
         cv.put(COLUMN_USER_NOM, "MANCEAU");
@@ -60,7 +60,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_EMAIL, "luc.manceau@efrei.net");
         cv.put(COLUMN_USER_FONCTION, 0);
         cv.put(COLUMN_USER_FAVORIS, "8");
-        cv.put(COLUMN_USER_PASSWORD, "admin");
+        cv.put(COLUMN_USER_PASSWORD, "123");
         insert = db.insert(USERS_TABLE, null, cv);
 
         cv.put(COLUMN_USER_NOM, "STRILING");
@@ -68,7 +68,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_EMAIL, "alix.stirling@efrei.net");
         cv.put(COLUMN_USER_FONCTION, 0);
         cv.put(COLUMN_USER_FAVORIS, "8");
-        cv.put(COLUMN_USER_PASSWORD, "admin");
+        cv.put(COLUMN_USER_PASSWORD, "123");
         insert = db.insert(USERS_TABLE, null, cv);
 
         cv.put(COLUMN_USER_NOM, "HUREL");
@@ -76,7 +76,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_EMAIL, "mathilde.hurel@efrei.net");
         cv.put(COLUMN_USER_FONCTION, 0);
         cv.put(COLUMN_USER_FAVORIS, "8");
-        cv.put(COLUMN_USER_PASSWORD, "admin");
+        cv.put(COLUMN_USER_PASSWORD, "123");
         insert = db.insert(USERS_TABLE, null, cv);
 
     }
@@ -131,27 +131,31 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public boolean addFavoris(Integer userId, Integer idNewFav){
         String oldFavoris = null;
         try{
+
             SQLiteDatabase db = this.getReadableDatabase();
             String queryString = "SELECT * FROM USERS_TABLE WHERE USER_ID=?";
             Cursor cursor = db.rawQuery(queryString, new String[]{userId.toString()});
+
             if(cursor.moveToFirst()) {
                 oldFavoris = cursor.getString(6);
             }
             String newFavoris = "";
             System.out.println("OLD : " + oldFavoris);
-
-            if(oldFavoris.equals("")){
-                newFavoris = idNewFav.toString();
+            if(oldFavoris.contains(idNewFav.toString())){
+                return false;
             }else{
-                newFavoris = oldFavoris + "," + idNewFav;
+                if(oldFavoris.equals("")){
+                    newFavoris = idNewFav.toString();
+                }else{
+                    newFavoris = oldFavoris + "," + idNewFav;
+                    newFavoris = newFavoris.replace(",,", ",");
+                }
+
+                queryString = "UPDATE USERS_TABLE SET USER_FAVORIS=\"" + newFavoris + "\" WHERE USER_ID=" + userId.toString();
+                db.execSQL(queryString);
+                System.out.println("J'AJOUTE !!!!");
+                System.out.println(newFavoris +"\n" + userId.toString());
             }
-
-            queryString = "UPDATE USERS_TABLE SET USER_FAVORIS=\"" + newFavoris + "\" WHERE USER_ID=" + userId.toString();
-            db.execSQL(queryString);
-//            db.rawQuery(queryString, new String[]{newFavoris});
-            System.out.println("J'AJOUTE !!!!");
-            System.out.println(newFavoris +"\n" + userId.toString());
-
 
             cursor.close();
             db.close();
@@ -161,7 +165,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
 
     }
+    public boolean deleteFav(Integer userId, Integer idOldFav){
+        String oldFavoris = null;
+        try{
+            SQLiteDatabase db = this.getReadableDatabase();
+            String queryString = "SELECT * FROM USERS_TABLE WHERE USER_ID=?";
+            Cursor cursor = db.rawQuery(queryString, new String[]{userId.toString()});
+            if(cursor.moveToFirst()) {
+                oldFavoris = cursor.getString(6);
+            }
 
+            assert oldFavoris != null;
+            oldFavoris = oldFavoris.replace(idOldFav.toString(), "");
+            oldFavoris = oldFavoris.replace(",,", ",");
+            queryString = "UPDATE USERS_TABLE SET USER_FAVORIS=\"" + oldFavoris + "\" WHERE USER_ID=" + userId.toString();
+            db.execSQL(queryString);
+
+            cursor.close();
+            db.close();
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+
+    }
     public UserModel getUser(Integer id){
 
         String queryString = "SELECT * FROM " + USERS_TABLE + " WHERE " +  COLUMN_USER_ID + "=?";

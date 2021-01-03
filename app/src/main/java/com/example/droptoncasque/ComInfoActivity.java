@@ -6,10 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,7 +37,8 @@ public class ComInfoActivity  extends AppCompatActivity {
         TextView infoTel = (TextView) findViewById(R.id.infoTel);
         TextView infoUrl = (TextView) findViewById(R.id.infoUrl);
         TextView infoHoraire = (TextView) findViewById(R.id.infoHoraire);
-        Button addFav = (Button) findViewById(R.id.btnFav);
+        Button btnSend = (Button) findViewById(R.id.btnSend);
+        ToggleButton buttonFavorite = (ToggleButton) findViewById(R.id.button_favorite);
 
         Intent intent = this.getIntent();
         String nom = intent.getStringExtra("title");
@@ -64,20 +70,52 @@ public class ComInfoActivity  extends AppCompatActivity {
 
         infoHoraire.setText(commerce.getHoraire());
 
-        addFav.setOnClickListener(new View.OnClickListener(){
+        ScaleAnimation scaleAnimation = new ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0.7f);
+        scaleAnimation.setDuration(500);
+        BounceInterpolator bounceInterpolator = new BounceInterpolator();
+        scaleAnimation.setInterpolator(bounceInterpolator);
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Integer userId = sharedPref.getInt("User_ID", -1);
+        UserModel user = dataUS.getUser(userId);
+        if(user.getFavoris().contains(commerce.getId())){
+            buttonFavorite.setChecked(true);
+        }
+
+        btnSend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                Integer userId = sharedPref.getInt("User_ID", -1);
-                System.out.println("Avant ajout : " + dataUS.getUser(userId));
-                Boolean success = dataUS.addFavoris(userId, commerce.getId());
-                System.out.println("Après ajout : " + dataUS.getUser(userId));
-//                Toast.makeText(ComInfoActivity.this, dataUS.getUser(userId).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ComInfoActivity.this, "Envoie de votre réservation...", Toast.LENGTH_LONG).show();
             }
         });
 
+        buttonFavorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                //animation
+                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                Integer userId = sharedPref.getInt("User_ID", -1);
+                compoundButton.startAnimation(scaleAnimation);
+
+                if (isChecked){
+                    System.out.println("AJOUT");
+                    System.out.println("Avant ajout : " + dataUS.getUser(userId));
+                    Boolean success = dataUS.addFavoris(userId, commerce.getId());
+                    if(!success){
+                        Toast.makeText(ComInfoActivity.this, "Déjà dans vos favoris", Toast.LENGTH_SHORT).show();
+                    }
+                    System.out.println("Après ajout : " + dataUS.getUser(userId));
+                }else{
+                    System.out.println("SUPPRESSION");
+                    System.out.println("Avant Suppression : " + dataUS.getUser(userId));
+                    Boolean success = dataUS.deleteFav(userId, commerce.getId());
+                    System.out.println("Après Suppression : " + dataUS.getUser(userId));
+
+                }
+            }
+
+        });
+
     }
-
-
 
 }
