@@ -33,7 +33,6 @@ public class UserModel {
                 favoris.add(Integer.parseInt(currentId));
             }
         }
-
         this.favoris = favoris;
     }
 
