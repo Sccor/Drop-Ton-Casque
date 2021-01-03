@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
             Menu nav_menu = navigationView.getMenu();
             nav_menu.findItem(R.id.nav_login).setVisible(false);
             nav_menu.findItem(R.id.nav_register).setVisible(false);
-            nav_menu.findItem(R.id.nav_user).setVisible(sharedPref.getBoolean("User_Role", true));
+            nav_menu.findItem(R.id.nav_user).setVisible(true);
             nav_menu.findItem(R.id.nav_com).setVisible(!sharedPref.getBoolean("User_Role", true));
         }else{
             Menu nav_menu = navigationView.getMenu();
