@@ -37,15 +37,6 @@ public class UserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        final NavController navController = Navigation.findNavController(view);
-        if (sharedPref.contains("User_Role")){
-            Boolean role = sharedPref.getBoolean("User_Role", true);
-            if (role) {
-                return;
-            } else {
-                navController.navigate(R.id.nav_com);
-            }
 
-        }
     }
 }

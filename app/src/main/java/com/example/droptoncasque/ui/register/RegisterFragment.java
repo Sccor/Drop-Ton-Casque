@@ -21,6 +21,8 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.droptoncasque.DataBaseHelper;
 import com.example.droptoncasque.InscriptionActivity;
@@ -69,17 +71,19 @@ public class RegisterFragment extends Fragment  {
             public void onClick(View view){
                 UserModel newUser;
                 try {
-                    if(Mdp.getText().toString().equals(Cmdp.getText().toString())){
+                    DataBaseHelper dbHelper = new DataBaseHelper(getActivity().getApplicationContext());
+                    if(Mdp.getText().toString().equals(Cmdp.getText().toString()) && !dbHelper.containsMail(Email.getText().toString())){
                         if(textSwitch.getText().toString().equals("Particulier")){
                             newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), 1, "");
                         }else{
                             newUser = new UserModel(-1, Nom.getText().toString(), Prenom.getText().toString(), Email.getText().toString(), 0, "");
                         }
-                        DataBaseHelper dbHelper = new DataBaseHelper(getActivity().getApplicationContext());
                         dbHelper.addOne(newUser, Mdp.getText().toString());
                         Toast valid = Toast.makeText(getActivity().getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT);
                         valid.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                         valid.show();
+                        final NavController navController = Navigation.findNavController(view);
+                        navController.navigate(R.id.nav_login);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

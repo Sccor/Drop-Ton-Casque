@@ -137,9 +137,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()) {
                 oldFavoris = cursor.getString(6);
             }
-            String newFavoris = oldFavoris + "," + idNewFav;
+            String newFavoris = "";
+            if(oldFavoris == null){
+                newFavoris = idNewFav.toString();
+            }else{
+                newFavoris = oldFavoris + "," + idNewFav;
+            }
             queryString = "UPDATE USERS_TABLE SET " + COLUMN_USER_FAVORIS + "=? WHERE " + COLUMN_USER_ID + "=?";
-            System.out.println(new String[]{newFavoris, String.valueOf(userId)});
+            System.out.println(newFavoris + "\n" + String.valueOf(userId));
             db.rawQuery(queryString, new String[]{newFavoris, userId.toString()});
             System.out.println("J'AJOUTE !!!!");
 
@@ -170,6 +175,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return newUser;
 
+    }
+
+    public boolean containsMail(String mail){
+        String queryString = "SELECT * FROM " + USERS_TABLE + " WHERE " +  COLUMN_USER_EMAIL + "=?";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, new String[]{mail});
+        return(cursor.moveToFirst());
     }
 
 }
