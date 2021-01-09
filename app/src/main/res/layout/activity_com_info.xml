@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ComInfoActivity">
+
     <TextView
         android:id="@+id/infoNom"
         android:layout_width="238dp"
         android:layout_height="73dp"
         android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="TextView"
         android:textAlignment="center"
-        android:gravity="center"
-        android:textSize="30sp"
+        android:textColor="@color/red_bdx"
+        android:textSize="33sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,73 +48,59 @@
 
     <TextView
         android:id="@+id/infoMail"
-        android:layout_width="197dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="307dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="28dp"
+        android:autoLink="email"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoAdresse" />
 
     <TextView
         android:id="@+id/infoTel"
-        android:layout_width="179dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="302dp"
+        android:layout_height="69dp"
+        android:autoLink="phone"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/infoUrl"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toEndOf="@+id/infoMail"
-        app:layout_constraintTop_toBottomOf="@+id/infoAdresse" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infoMail"
+        app:layout_constraintVertical_bias="0.396" />
 
     <TextView
         android:id="@+id/infoUrl"
         android:layout_width="357dp"
         android:layout_height="54dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="20dp"
         android:text="TextView"
+        android:autoLink = "web"
         android:textAlignment="center"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/infoHoraire"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoTel" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/infoHoraire"
         android:layout_width="294dp"
         android:layout_height="87dp"
+        android:layout_marginBottom="104dp"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoUrl"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/btnFav"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_margin="@dimen/fab_margin"-->
-<!--        android:layout_marginStart="24dp"-->
-<!--        app:backgroundTint="@color/red_bdx"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/btnSend"-->
-<!--        app:layout_constraintHorizontal_bias="0.044"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/infoHoraire"-->
-<!--        app:layout_constraintVertical_bias="0.484"-->
-<!--        app:srcCompat="@drawable/ic_baseline_star_border_48"-->
-<!--        app:tint="@color/white"-->
-<!--        tools:ignore="VectorDrawableCompat" />-->
     <Button
         android:id="@+id/btnSend"
         android:layout_width="177dp"
