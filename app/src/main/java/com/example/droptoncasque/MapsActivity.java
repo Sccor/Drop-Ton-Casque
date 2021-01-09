@@ -14,6 +14,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.LevelListDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -99,12 +101,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         DataBaseCommerces dataBC = new DataBaseCommerces(MapsActivity.this);
         List<CommerceModel> everyone = dataBC.getAllCommerces();
 
+
+        BitmapDrawable bd=(BitmapDrawable) getResources().getDrawable(R.drawable.map_marker);
+        Bitmap b=bd.getBitmap();
+        Bitmap bhalfsize=Bitmap.createScaledBitmap(b, b.getWidth()/2,b.getHeight()/2, false);
         for (CommerceModel commerce : everyone){
             LatLng pos = new LatLng(commerce.getCoord().getS(), commerce.getCoord().getI());
             mMap.addMarker(new MarkerOptions()
                     .position(pos)
                     .snippet(commerce.getAdresse())
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker))
+                    .icon(BitmapDescriptorFactory.fromBitmap(bhalfsize))
                     .title(commerce.getNom()));
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
@@ -126,5 +132,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(infoActivity);
 
 
+    }
+
+    public Bitmap resizeMapIcons(String iconName,int width, int height){
+        Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),getResources().getIdentifier(iconName, "drawable", getPackageName()));
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, width, height, false);
+        return resizedBitmap;
     }
 }
