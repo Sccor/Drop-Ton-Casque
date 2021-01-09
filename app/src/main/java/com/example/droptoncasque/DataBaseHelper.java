@@ -212,4 +212,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean containsMail(String mail){
+        String queryString = "SELECT * FROM " + USERS_TABLE + " WHERE " +  COLUMN_USER_EMAIL + "=?";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, new String[]{mail});
+        return(cursor.moveToFirst());
+    }
+
 }
