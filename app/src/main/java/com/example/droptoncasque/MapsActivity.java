@@ -99,13 +99,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         DataBaseCommerces dataBC = new DataBaseCommerces(MapsActivity.this);
         List<CommerceModel> everyone = dataBC.getAllCommerces();
 
-
         for (CommerceModel commerce : everyone){
             LatLng pos = new LatLng(commerce.getCoord().getS(), commerce.getCoord().getI());
             mMap.addMarker(new MarkerOptions()
                     .position(pos)
                     .snippet(commerce.getAdresse())
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map))
                     .title(commerce.getNom()));
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
