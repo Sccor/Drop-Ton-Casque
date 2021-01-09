@@ -1,13 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.com.comFragment">
+    tools:context=".ComActivity">
+
+
+    <EditText
+        android:id="@+id/comUrl"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:hint="@string/url"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comTel"
+        app:layout_constraintVertical_bias="0.076"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/comHoraire"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="100dp"
+        android:hint="@string/horaire"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextFields" />
+
+    <Button
+        android:id="@+id/testQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:text="View ALL"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAjout"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comHoraire"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:id="@+id/textView"
+        android:layout_width="220dp"
+        android:layout_height="62dp"
+        android:gravity="center"
+        android:text="@string/welCom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/comNom"
+        android:layout_width="262dp"
+        android:layout_height="53dp"
+        android:hint="@string/nameShop"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <EditText
+        android:id="@+id/comType"
+        android:layout_width="266dp"
+        android:layout_height="52dp"
+        android:hint="@string/typeShop"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comNom"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <EditText
+        android:id="@+id/comAdresse"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:hint="@string/adressShop"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comType"
+        app:layout_constraintVertical_bias="0.038" />
+
+    <EditText
+        android:id="@+id/comEmail"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comAdresse"
+        app:layout_constraintVertical_bias="0.027" />
+
+    <EditText
+        android:id="@+id/comTel"
+        android:layout_width="264dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="196dp"
+        android:hint="@string/tel"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comEmail"
+        app:layout_constraintVertical_bias="0.324" />
+
+    <Button
+        android:id="@+id/btnAjout"
+        android:layout_width="149dp"
+        android:layout_height="64dp"
+        android:text="@string/addShop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comAdresse"
+        app:layout_constraintVertical_bias="0.943" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
