@@ -9,6 +9,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -26,6 +31,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -80,23 +87,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         int index = 0;
         LatLng posEfrei = new LatLng(48.788759834312756, 2.363766951205992);
         mMap = googleMap;
         DataBaseCommerces dataBC = new DataBaseCommerces(MapsActivity.this);
         List<CommerceModel> everyone = dataBC.getAllCommerces();
+
+
         for (CommerceModel commerce : everyone){
             LatLng pos = new LatLng(commerce.getCoord().getS(), commerce.getCoord().getI());
             mMap.addMarker(new MarkerOptions()
                     .position(pos)
                     .snippet(commerce.getAdresse())
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map))
                     .title(commerce.getNom()));
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
