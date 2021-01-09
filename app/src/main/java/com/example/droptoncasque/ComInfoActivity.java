@@ -78,8 +78,10 @@ public class ComInfoActivity  extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Integer userId = sharedPref.getInt("User_ID", -1);
         UserModel user = dataUS.getUser(userId);
-        if(user.getFavoris().contains(commerce.getId())){
-            buttonFavorite.setChecked(true);
+        if(user.getFavoris() != null){
+            if(user.getFavoris().contains(commerce.getId())){
+                buttonFavorite.setChecked(true);
+            }
         }
 
         btnSend.setOnClickListener(new View.OnClickListener(){
