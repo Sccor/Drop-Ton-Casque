@@ -104,6 +104,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions()
                     .position(pos)
                     .snippet(commerce.getAdresse())
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker))
                     .title(commerce.getNom()));
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
