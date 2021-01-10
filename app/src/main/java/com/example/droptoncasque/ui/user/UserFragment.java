@@ -105,7 +105,7 @@ public class UserFragment extends Fragment {
                 listFavos.add(new Model(favos.getNom(), favos.getType(), favos.getAdresse()));
             }
 
-            ArrayAdapter<Model> arrAdpt = new ArrayAdapter<Model>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, listFavos);
+            ArrayAdapter<Model> arrAdpt = new ArrayAdapter<Model>(requireActivity(), android.R.layout.simple_list_item_1, listFavos);
             listFavs.setAdapter(arrAdpt);
         }
 

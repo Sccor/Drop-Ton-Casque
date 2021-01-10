@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ import java.util.ListIterator;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap;
-    private Button menu;
+    private ImageButton menu;
     private ArrayList<CommerceModel> commerces;
 
     public static class Pair<S, I>{
@@ -81,7 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-        this.menu = (Button) findViewById(R.id.map_button_menu);
+        menu = (ImageButton) findViewById(R.id.map_button_menu);
         menu.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
