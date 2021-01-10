@@ -69,6 +69,7 @@ public class comFragment extends Fragment {
                 } catch (Exception e) {
                     newCommerce = new CommerceModel(-1, "error", null, null, null, null,null, null, null);
                     Toast wrong = Toast.makeText(getContext().getApplicationContext(),"Error",Toast.LENGTH_SHORT);
+                    System.out.println(e.toString());
                     wrong.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
                     wrong.show();
                 }

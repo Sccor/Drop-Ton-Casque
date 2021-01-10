@@ -41,6 +41,7 @@ import java.util.Objects;
 public class UserFragment extends Fragment {
 
     private UserViewModel userViewModel;
+    private TextView uname;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +52,8 @@ public class UserFragment extends Fragment {
         DataBaseHelper databaseuse = new DataBaseHelper(getActivity());
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         Integer userId = sharedPref.getInt("User_ID", -1);
+        uname = root.findViewById(R.id.uname);
+        uname.setText("Bienvenue, " + sharedPref.getString("User_Surname", "nouvel") + " " + sharedPref.getString("User_Name", "utilisateur"));
         ArrayList<Integer> favs =  databaseuse.getUser(userId).getFavoris();
         List<CommerceModel> allFavs = databasecom.getAllCommerces();
         List<CommerceModel> curentFavs = null;

@@ -9,16 +9,44 @@
 
 
     <TextView
-        android:id="@+id/textSwitch"
-        android:layout_width="293dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/user_page"
+        android:id="@+id/title"
+        android:layout_width="149dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/user_name"
         android:textAlignment="center"
-        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/uname"
+        android:layout_width="308dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/favtitle"
+        android:layout_width="157dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/vos_favoris"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/list_favs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uname"
+        app:layout_constraintVertical_bias="0.173" />
 
     <ListView
         android:id="@+id/list_favs"
