@@ -105,7 +105,7 @@ public class DataBaseCommerces extends SQLiteOpenHelper {
         cv.put(COLUMN_COMMERCE_CONTACT_TELEPHONE, "+33143908505");
         cv.put(COLUMN_COMMERCE_URL, "https://www.franprix.fr/magasins/6958");
         cv.put(COLUMN_COMMERCE_HORAIRE, "7/7, 8h00 - 20h00");
-        cv.put(COLUMN_COMMERCE_COORD, "48.7895693,2.3648678");
+        cv.put(COLUMN_COMMERCE_COORD, "48.7883077,2.3650677");
 
         insert = db.insert(COMMERCES_TABLE, null, cv);
 

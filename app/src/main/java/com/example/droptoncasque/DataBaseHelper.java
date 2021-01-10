@@ -178,6 +178,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             assert oldFavoris != null;
             oldFavoris = oldFavoris.replace(idOldFav.toString(), "");
             oldFavoris = oldFavoris.replace(",,", ",");
+            if((Character.toString(oldFavoris.charAt(0))).equals(",") && !oldFavoris.equals("")){
+                oldFavoris = oldFavoris.substring(1);
+            }
             queryString = "UPDATE USERS_TABLE SET USER_FAVORIS=\"" + oldFavoris + "\" WHERE USER_ID=" + userId.toString();
             db.execSQL(queryString);
 

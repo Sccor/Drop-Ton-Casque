@@ -45,7 +45,6 @@ public class comFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_com, container, false);
         Button menu = (Button) root.findViewById(R.id.button_menu);
         Button add = (Button) root.findViewById(R.id.btnAjout);
-        Button testQuery = (Button) root.findViewById(R.id.testQuery);
 
         EditText Nom = root.findViewById(R.id.comNom);
         EditText Type = root.findViewById(R.id.comType);
@@ -54,17 +53,6 @@ public class comFragment extends Fragment {
         EditText Adresse = root.findViewById(R.id.comAdresse);
         EditText Url = root.findViewById(R.id.comUrl);
         EditText Horaires = root.findViewById(R.id.comHoraire);
-
-        testQuery.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                DataBaseCommerces dataBC = new DataBaseCommerces(getContext());
-                List<CommerceModel> everyone = dataBC.getAllCommerces();
-                Toast valid = Toast.makeText(getContext(), everyone.toString(), Toast.LENGTH_LONG);
-                valid.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 350);
-                valid.show();
-            }
-        });
 
         add.setOnClickListener(new View.OnClickListener(){
             @RequiresApi(api = Build.VERSION_CODES.N)

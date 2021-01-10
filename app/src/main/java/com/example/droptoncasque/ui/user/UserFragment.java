@@ -47,7 +47,6 @@ public class UserFragment extends Fragment {
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         View root = inflater.inflate(R.layout.fragment_user, container, false);
         ListView listFavs = (ListView)  root.findViewById(R.id.list_favs);
-//        androidx.recyclerview.widget.RecyclerView listFavs = (androidx.recyclerview.widget.RecyclerView) getView().findViewById(R.id.list_favs);
         DataBaseCommerces databasecom = new DataBaseCommerces(getActivity());
         DataBaseHelper databaseuse = new DataBaseHelper(getActivity());
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
